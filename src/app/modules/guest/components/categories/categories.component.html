@@ -1,3 +1,4 @@
-<p>
-  categories works!
-</p>
+<h2><i class="fa fa-folder-open-o" aria-hidden="true"></i><em> Categories</em></h2>
+<li class="list-unstyled" *ngFor="let categorie of categories">
+    <a href="#!/category={{categorie.titre}} {{categorie.id}}/1">{{categorie.titre}}</a>
+</li>

@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { PostsModule } from './modules/guest/posts.module';
 import { RouterModule, Routes } from '@angular/router';
+import { MatMenuModule } from '@angular/material';
 
 //  -----------------
 import { AppComponent } from './app.component';
@@ -24,7 +25,8 @@ const ROUTES: Routes = [
   PostsModule,
   RouterModule.forRoot(
     ROUTES
-  )
+  ),
+  MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
