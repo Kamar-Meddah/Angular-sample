@@ -22,6 +22,10 @@ export class CategoriesComponent implements OnInit {
   constructor(private service: CategoriesService) { }
 
   ngOnInit() {
+    this.getAll();
+  }
+
+  private getAll() {
     this.service.getAll().then((data) => {
       this.categories = data.art;
     }, (err) => {

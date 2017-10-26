@@ -6,6 +6,8 @@ import {HttpClientModule} from '@angular/common/http';
 //  ------------------
 import { CategoriesService } from './../../services/categories.service';
 import { PostsService } from './../../services/posts.service';
+import { CommentsService } from './../../services/Comments.service';
+import { ImagesService } from './../../services/images.service';
 
 //  ------------------
 import { HomeComponent } from './components/home/home.component';
@@ -31,7 +33,9 @@ const ROUTES: Routes = [
   ],
   providers: [
     CategoriesService,
-    PostsService
+    PostsService,
+    ImagesService,
+    CommentsService
   ],
   exports: [
     RouterModule
