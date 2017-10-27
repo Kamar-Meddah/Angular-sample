@@ -15,7 +15,7 @@ export class NotFoundComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.setTitle('err');
+    this.setTitle('Error 404 NotFound');
   }
 
 }

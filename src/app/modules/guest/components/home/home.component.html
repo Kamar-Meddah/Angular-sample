@@ -3,6 +3,39 @@
     <div class="col-sm-8 col-8">
         <h1><i class="fa fa-home" aria-hidden="true"></i><em><b> Home</b></em></h1>
         <br>
+        <div [hidden]="!loading" class="container admin text-center"><em><i style="font-size:15em;" class="fa fa-refresh fa-spin fa-3x fa-fw"></i><br>
+            <h1>Loading...</h1></em>
+        </div>
+        <div [hidden]="loading">
+            <div *ngFor="let post of posts">
+                <h2><a href="#!/category={{post.category.titre}}/post={{post.titre}}/{{post.id}}">{{post.titre}}</a></h2>
+                <a href="#!/category={{post.category.titre}} {{post.category.id}}/1"><i class="fa fa-folder-open-o" aria-hidden="true"></i><em class="shadow">{{post.category.titre}}</em></a>
+                <br><br>
+                <p [innerHtml]="post.contenu"></p>
+                <div class="text-right"><em>{{post.date | timeSince}} ago</em></div>
+                <b><hr></b>
+            </div>
+        </div>
+
+        <div [hidden]="pages.length == 0">
+            <br>
+            <ul class="pagination justify-content-center">
+                <li [class.disabled]="page<=1" class="page-item">
+                    <a class="page-link" routerLink="/{{(page*1)-(1*1)}}">&laquo;</a>
+                </li>
+
+                <li [class.active]="Page === page" *ngFor="let Page of pages" class="page-item ">
+                    <a routerLinkActive="active" class="page-link" routerLink="/{{Page}}">{{Page}}</a>
+                </li>
+
+                <li [class.disabled]="disabled" class="page-item">
+                    <a class="page-link" routerLink="/{{(page*1)+(1*1)}}">&raquo;</a>
+                </li>
+
+            </ul>
+        </div>
+
+
     </div>
 
     <div class="col-sm-4 col-4">

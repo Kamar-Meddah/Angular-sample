@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import "~font-awesome/css/font-awesome.min.css";
 @import "~@angular/material/prebuilt-themes/purple-green.css";
 @import "~bootstrap/dist/css/bootstrap.min.css";
 
@@ -10,12 +11,6 @@
     --width: 300;
 }
 
-@media (min-width: 992px) {
-    body {
-        padding-top: 6em;
-    }
-}
-
 .navbar-toggler {
     z-index: 1;
 }
@@ -24,8 +19,23 @@
     nav>.container {
         width: 100%;
     }
-    #search {
-        width: 10px;
+    nav>.moz {
+        -moz-transform: translateY(-6px)
+    }
+}
+
+@media (max-width: 767px) {
+    nav>.container {
+        width: 100%;
+    }
+    nav>.moz {
+        -moz-transform: translateY(-5px)
+    }
+}
+
+@media (min-width: 992px) {
+    body {
+        padding-top: 6em;
     }
 }
 

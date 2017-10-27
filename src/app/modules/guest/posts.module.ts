@@ -2,8 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
+import { TimeSinceModule } from '@thisissoon/angular-timesince';
 
-//  ------------------
+//  -----------------
 import { CategoriesService } from './../../services/categories.service';
 import { PostsService } from './../../services/posts.service';
 import { CommentsService } from './../../services/Comments.service';
@@ -25,7 +26,8 @@ const ROUTES: Routes = [
   HttpClientModule,
   RouterModule.forRoot(
     ROUTES
-  )
+  ),
+  TimeSinceModule
   ],
   declarations: [
     HomeComponent,

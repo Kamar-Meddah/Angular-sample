@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsersService } from './../../services/users.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor() { }
+  private navBar: Boolean;
+
+  constructor(private users: UsersService) { }
 
   ngOnInit() {
+    this.switchNavBar();
+  }
+
+  private switchNavBar (): void{
+    this.users.isLogged().then((data) => {
+    this.navBar = data;
+    });
   }
 
 }

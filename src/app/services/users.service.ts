@@ -6,7 +6,7 @@ export class UsersService {
 
   constructor(private http: HttpClient) { }
 
-  public logged (): Promise<any> {
+  public isLogged (): Promise<any> {
 
     return new Promise ((resolve, reject) => {
       this.http.post('http://localhost/', {request: 'Users.logged' })
@@ -32,7 +32,7 @@ export class UsersService {
 
   }
 
-  public connect (username: String, passsword: String): Promise<any> {
+  public login (username: String, passsword: String): Promise<any> {
 
     return new Promise ((resolve, reject) => {
       this.http.post('http://localhost/', { request: 'Users.login', username: username, password: passsword })
@@ -58,7 +58,7 @@ export class UsersService {
 
   }
 
-  public usernameChange (id: Number, username: String): Promise<any> {
+  public changeUsername (id: Number, username: String): Promise<any> {
 
     return new Promise ((reject, resolve) => {
       this.http.post('http://localhost/', { request: 'Users.usernameChange', 'id': id, 'username': username})
@@ -71,7 +71,7 @@ export class UsersService {
 
   }
 
-  public passChange (id: Number, password: String): Promise<any> {
+  public changePass (id: Number, password: String): Promise<any> {
 
     return new Promise ((resolve, reject) => {
       this.http.post('http://localhost/', { request: 'Users.passwordChange', 'id': id, 'password': password })
@@ -84,7 +84,7 @@ export class UsersService {
 
   }
 
-  public getId (): Promise<any> {
+  public getUserId (): Promise<any> {
 
     return new Promise ((resolve, reject) => {
       this.http.post('http://localhost/', { request: 'Users.getUserId' })
