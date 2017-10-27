@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { PostsService } from './../../../../services/posts.service';
 import { ActivatedRoute } from '@angular/router';
+import {MatPaginatorModule} from '@angular/material';
 
 @Component({
   selector: 'app-home',
@@ -39,7 +40,6 @@ export class HomeComponent implements OnInit {
         this.posts = data.art;
         this.loading = false;
         this.disabled = this.page < data.nbpage ? false : true;
-        console.log(this.pages)
       });
 
     }

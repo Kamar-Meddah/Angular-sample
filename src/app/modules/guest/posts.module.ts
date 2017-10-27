@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
 import { TimeSinceModule } from '@thisissoon/angular-timesince';
+
+import {MatPaginatorModule} from '@angular/material';
 
 //  -----------------
 import { CategoriesService } from './../../services/categories.service';
@@ -13,6 +16,7 @@ import { ImagesService } from './../../services/images.service';
 //  ------------------
 import { HomeComponent } from './components/home/home.component';
 import { CategoriesComponent } from './components/categories/categories.component';
+import { ContentPreviewPipe } from './pipes/content-preview.pipe';
 
 
 const ROUTES: Routes = [
@@ -27,11 +31,14 @@ const ROUTES: Routes = [
   RouterModule.forRoot(
     ROUTES
   ),
-  TimeSinceModule
+  TimeSinceModule,
+  BrowserAnimationsModule,
+  MatPaginatorModule
   ],
   declarations: [
     HomeComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    ContentPreviewPipe
   ],
   providers: [
     CategoriesService,

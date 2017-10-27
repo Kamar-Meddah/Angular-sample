@@ -10,8 +10,8 @@
             <div *ngFor="let post of posts">
                 <h2><a href="#!/category={{post.category.titre}}/post={{post.titre}}/{{post.id}}">{{post.titre}}</a></h2>
                 <a href="#!/category={{post.category.titre}} {{post.category.id}}/1"><i class="fa fa-folder-open-o" aria-hidden="true"></i><em class="shadow">{{post.category.titre}}</em></a>
-                <br><br>
-                <p [innerHtml]="post.contenu"></p>
+                <br>
+                <p [innerHtml]="post|contentPreview"></p>
                 <div class="text-right"><em>{{post.date | timeSince}} ago</em></div>
                 <b><hr></b>
             </div>
@@ -33,6 +33,8 @@
                 </li>
 
             </ul>
+            <mat-paginator>
+            </mat-paginator>
         </div>
 
 

@@ -11,34 +11,6 @@
     --width: 300;
 }
 
-.navbar-toggler {
-    z-index: 1;
-}
-
-@media (max-width: 576px) {
-    nav>.container {
-        width: 100%;
-    }
-    nav>.moz {
-        -moz-transform: translateY(-6px)
-    }
-}
-
-@media (max-width: 767px) {
-    nav>.container {
-        width: 100%;
-    }
-    nav>.moz {
-        -moz-transform: translateY(-5px)
-    }
-}
-
-@media (min-width: 992px) {
-    body {
-        padding-top: 6em;
-    }
-}
-
 .outline-blue {
     border-color: var(--primary);
     background-color: transparent;
@@ -79,39 +51,6 @@ a:hover {
 
 
 /* the search input */
-
-.navbar {
-    height: 3.2em;
-    box-shadow: 2px 3px 3px 2px grey;
-    background-color: var(--primary)
-}
-
-#search {
-    width: 100px;
-    height: 2.2em;
-    transition: width 0.5s;
-    border-radius: 10px 0px 0px 10px;
-    box-shadow: 0px 0px 0px 0px;
-    overflow: hidden;
-}
-
-#search::after {
-    content: 'aze'
-}
-
-#search:hover,
-#search:focus {
-    width: calc(var(--width) * 1px);
-    transition: width 0.5s;
-}
-
-#button {
-    border-radius: 0px 10px 10px 0px;
-    box-shadow: 0px 0px 0px 0px;
-    border-color: white;
-    background-color: white;
-    overflow: hidden;
-}
 
 .control {
     border-radius: 0.3em;

@@ -16,7 +16,7 @@ export class NavBarComponent implements OnInit {
     this.switchNavBar();
   }
 
-  private switchNavBar (): void{
+  private switchNavBar (): void {
     this.users.isLogged().then((data) => {
     this.navBar = data;
     });
