@@ -4,8 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
 import { TimeSinceModule } from '@thisissoon/angular-timesince';
+import { FormsModule } from '@angular/forms';
 
-import {MatPaginatorModule} from '@angular/material';
 
 //  -----------------
 import { CategoriesService } from './../../services/categories.service';
@@ -16,11 +16,16 @@ import { ImagesService } from './../../services/images.service';
 //  ------------------
 import { HomeComponent } from './components/home/home.component';
 import { CategoriesComponent } from './components/categories/categories.component';
-import { ContentPreviewPipe } from './pipes/content-preview.pipe';
+import { SearchComponent } from './components/search/search.component';
+import { PostCategorieComponent } from './components/post-categorie/post-categorie.component';
+import { PostShowComponent } from './components/post-show/post-show.component';
 
 
 const ROUTES: Routes = [
   {path: ':page', component: HomeComponent},
+  {path: 'search/:post/:page', component: SearchComponent},
+  {path: ':categorie@:category_id/:page', component: PostCategorieComponent},
+  {path: ':categorie/:post/:postId', component: PostShowComponent},
   {path : '', redirectTo: '/1', pathMatch: 'full'}
 ];
 
@@ -33,12 +38,14 @@ const ROUTES: Routes = [
   ),
   TimeSinceModule,
   BrowserAnimationsModule,
-  MatPaginatorModule
+  FormsModule
   ],
   declarations: [
     HomeComponent,
     CategoriesComponent,
-    ContentPreviewPipe
+    SearchComponent,
+    PostCategorieComponent,
+    PostShowComponent
   ],
   providers: [
     CategoriesService,

@@ -1,13 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriesService } from './../../../../services/categories.service';
-
-
-interface Categorie {
-  createdAt: Date;
-  id: Number;
-  titre: String;
-  updatedAt: Date;
-}
+import { Categorie } from './../../../../interfaces/categorie';
 
 @Component({
   selector: 'app-categories',

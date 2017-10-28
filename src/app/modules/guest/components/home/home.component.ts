@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { PostsService } from './../../../../services/posts.service';
 import { ActivatedRoute } from '@angular/router';
-import {MatPaginatorModule} from '@angular/material';
+
 
 @Component({
   selector: 'app-home',
@@ -17,14 +17,16 @@ export class HomeComponent implements OnInit {
   private loading: Boolean;
   private disabled: Boolean;
   private pages: Array<Number>;
+  private url: String;
+  private loop: Number;
 
     public constructor(private titleService: Title, private service: PostsService, private route: ActivatedRoute) {
       this.setTitle('Home');
+      this.loop = 0;
       this.pages = [];
       this.loading = true;
-      this.getPage().then((data) => {
-        this.page = data;
-      });
+      this.getPage();
+
      }
 
     private setTitle( newTitle: string): void {
@@ -32,24 +34,29 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit() {
-
+      this.route.url.subscribe((url) => {
+        if ( this.url !== url[0].path ) {
+          this.getPage();
+          this.url = url[0].path;
       this.getAll().then((data) => {
+        if (this.loop === 0) {
         for (let i = 1; i <= data.nbpage; i++) {
           this.pages.push(i);
         }
+        this.loop = 1;
+      }
         this.posts = data.art;
         this.loading = false;
         this.disabled = this.page < data.nbpage ? false : true;
       });
-
+    }
+    });
     }
 
-    private getPage (): Promise<Number> {
+    private getPage (): void {
 
-      return new Promise ((resolve) => {
-        this.route.params.subscribe((params) => {
-          resolve(isNaN(params.page) || params.page <= 0 ? 1 : Math.ceil(params.page));
-        });
+      this.route.params.subscribe((params) => {
+        this.page = isNaN(params.page) || params.page <= 0 ? 1 : Math.ceil(params.page);
       });
 
     }
@@ -61,10 +68,8 @@ export class HomeComponent implements OnInit {
         }, (err) => {
           reject(err);
         });
-      })
+      });
 
     }
-
-
 
 }

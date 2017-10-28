@@ -4,7 +4,8 @@ import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import { PostsModule } from './modules/guest/posts.module';
 import { RouterModule, Routes } from '@angular/router';
-import { MatMenuModule } from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 
 //  ----------------- Components ---------------
 import { AppComponent } from './app.component';
@@ -32,7 +33,8 @@ const ROUTES: Routes = [
   ROUTES
   ),
   HttpClientModule,
-  MatMenuModule
+  BrowserAnimationsModule,
+  FormsModule
   ],
   providers: [
     UsersService
