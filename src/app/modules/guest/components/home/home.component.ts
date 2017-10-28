@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { PostsService } from './../../../../services/posts.service';
 import { ActivatedRoute } from '@angular/router';
+import { Post } from './../../../../interfaces/post';
 
 
 @Component({
@@ -13,7 +14,7 @@ export class HomeComponent implements OnInit {
 
   private page: Number;
   private nbpage: Number;
-  private posts: Object;
+  private posts: Array<Post>;
   private loading: Boolean;
   private disabled: Boolean;
   private pages: Array<Number>;

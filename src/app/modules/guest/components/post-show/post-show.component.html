@@ -1,23 +1,21 @@
-<navbar></navbar>
-
 <div [hidden]="!loading" class="container admin text-center" style="transform:translateY(12.5%);"><em><i style="font-size:15em;" class="fa fa-refresh fa-spin fa-3x fa-fw"></i><br>
   <h1>Loading...</h1></em>
 </div>
-<div [hidden]="!loading">
+<div [hidden]="loading">
     <h1><em>{{post.titre}}</em></h1>
     <br>
     <div class="row">
         <div class="col-sm-8 col-8">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a routerLink="/"><i class="fa fa-home" aria-hidden="true"></i><em> Home</em></a></li>
-                <li class="breadcrumb-item"><a routerLink="/{{post.category.titre}}/{{post.categoryId}}/1"><i class="fa fa-folder-open-o" aria-hidden="true"></i> <em>{{post.category.titre}}</em></a></li>
+                <li class="breadcrumb-item"><a routerLink="/{{post.category.titre}}/{{post.category.id}}/1"><i class="fa fa-folder-open-o" aria-hidden="true"></i> <em>{{post.category.titre}}</em></a></li>
                 <li class="breadcrumb-item active"><i class="fa fa-file-text-o" aria-hidden="true"></i> <em>{{post.titre}}</em></li>
             </ol>
 
             <br>
-            <div ng-bind-html="post.contenu"></div> <br>
+            <div [innerHtml]="post.contenu"></div> <br>
             <div class="row">
-                <div class="col-sm-4 col-12" ng-repeat="image in images">
+                <div class="col-sm-4 col-12" *ngFor="let image of images">
                     <a href="http://localhost/img/articles/{{image.name}}" data-lightbox="roadtrip">
                         <p><img src="http://localhost/img/articles/{{image.name}}" class="img-fluid img-thumbnail" alt="Images" width="300px"></p>
                     </a>
@@ -37,16 +35,22 @@
 
     <div class="row">
         <div class="col-sm-6 col-6">
-            <form ng-submit="commenter()">
+            <form class="example-form">
                 <h3><i class="fa fa-commenting" aria-hidden="true"></i> <em>Poster Vos Commentaires</em></h3>
+                <br>
+                <mat-form-field class="example-full-width">
+                    <input matInput type="text" id="name" name="name" placeholder="Enter Ur Name" required>
+                </mat-form-field>
+                <br>
+                <mat-form-field class="example-full-width">
+                    <textarea matInput id="comment" name="comment" placeholder="Enter Ur comment" rows="7" required></textarea>
+                </mat-form-field>
+                <br>
 
-                <label for="name">Name : </label> <input type="text" id="name" class="form-control control" name="name" ng-model="name" placeholder="Enter Ur Name" required>
-                <br>
-                <label for="comment">Votre Commentaire : </label><textarea id=" comment " class="form-control control " ng-model="comment " name="comment " required></textarea>
-                <br>
-                <div class="text-right ">
-                    <button type="submit " class="btn btn-outline-primary"><i class="fa fa-commenting-o" aria-hidden="true"></i><em> Commenter</em></button>
+                <div class="text-right">
+                    <button mat-mini-fab class="accent" type="submit"><i class="fa fa-commenting-o" aria-hidden="true"></i></button>
                 </div>
+
             </form>
         </div>
     </div>
@@ -56,30 +60,26 @@
         <div class="col-sm-6 col-6">
             <div>
                 <h3><i class="fa fa-comments" aria-hidden="true"></i> <em>Commentaires</em> :</h3>
-                <div class="text-right ">
-                    <select ng-model="select">
+                <div class="text-right">
+                    <select>
                                 <option value="+date">oldest</option>   
                                  <option value="-date" selected>newest</option>   
                             </select>
                     <br>
                 </div>
             </div>
-            <div ng-show="load" class="container admin text-center"><em><i style="font-size:15em;" class="fa fa-refresh fa-spin fa-3x fa-fw"></i><br>
-            <h1>Loading...</h1></em></div>
-            <div ng-hide="load">
-                <div ng-repeat="comment in comments|orderBy:select ">
-                    <h6><b>{{comment.name }} : </b></h6>
-                    <div class="row ">
-                        <div class="col-sm-1 col-1"></div>
-                        <div class="col-sm-10 col-10 ">
-                            <p> {{comment.content}} </p>
-                        </div>
-                        <i ng-show="dat " ng-click="delete(comment.id,$index) " class="fa fa-times t " aria-hidden="true "></i>
+
+            <div *ngFor="let comment of comments">
+                <h6><b>{{comment.name}} : </b></h6>
+                <div class="row ">
+                    <div class="col-sm-1 col-1"></div>
+                    <div class="col-sm-10 col-10 ">
+                        <p> {{comment.content}} </p>
                     </div>
-                    <hr>
                 </div>
+                <hr>
             </div>
+
         </div>
     </div>
-</div>
 </div>

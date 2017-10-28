@@ -5,13 +5,15 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
 import { TimeSinceModule } from '@thisissoon/angular-timesince';
 import { FormsModule } from '@angular/forms';
+import {MatInputModule, MatButtonModule, MatCardModule} from '@angular/material';
 
 
 //  -----------------
 import { CategoriesService } from './../../services/categories.service';
 import { PostsService } from './../../services/posts.service';
-import { CommentsService } from './../../services/Comments.service';
+import { CommentsService } from './../../services/comments.service';
 import { ImagesService } from './../../services/images.service';
+import { UsersService } from './../../services/users.service';
 
 //  ------------------
 import { HomeComponent } from './components/home/home.component';
@@ -38,7 +40,10 @@ const ROUTES: Routes = [
   ),
   TimeSinceModule,
   BrowserAnimationsModule,
-  FormsModule
+  FormsModule,
+  MatInputModule,
+  MatButtonModule,
+  MatCardModule
   ],
   declarations: [
     HomeComponent,
@@ -51,6 +56,7 @@ const ROUTES: Routes = [
     CategoriesService,
     PostsService,
     ImagesService,
+    UsersService,
     CommentsService
   ],
   exports: [

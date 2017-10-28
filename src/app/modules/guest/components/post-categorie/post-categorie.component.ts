@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { PostsService } from './../../../../services/posts.service';
 import { ActivatedRoute } from '@angular/router';
+import { Post } from './../../../../interfaces/post';
 
 @Component({
   selector: 'app-post-categorie',
@@ -12,7 +13,7 @@ export class PostCategorieComponent implements OnInit {
 
   private page: Number;
   private nbpage: Number;
-  private posts: Object;
+  private posts: Array<Post>;
   private loading: Boolean;
   private disabled: Boolean;
   private pages: Array<Number>;
@@ -55,7 +56,6 @@ export class PostCategorieComponent implements OnInit {
           if (this.url !== params.category_id) {
             this.loop = false;
           }
-          console.log(data)
             this.posts = data.art;
             this.loading = false;
             this.disabled = this.page < data.nbpage ? false : true;

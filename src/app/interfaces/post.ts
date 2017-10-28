@@ -1,4 +1,6 @@
 export interface Post {
+    createdAt: Date;
+    updatedAt: Date;
     id: Number;
     titre: String;
     contenu: String;
@@ -6,6 +8,8 @@ export interface Post {
     categoryId: Number;
     category: {
       id: Number;
-      titre: String
+      titre: String;
+      createdAt: Date;
+      updatedAt: Date;
     };
 }
