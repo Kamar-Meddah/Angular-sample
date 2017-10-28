@@ -5,8 +5,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
 import { TimeSinceModule } from '@thisissoon/angular-timesince';
 import { FormsModule } from '@angular/forms';
-import {MatInputModule, MatButtonModule, MatCardModule} from '@angular/material';
-
+import {MatInputModule, MatButtonModule, MatCardModule, MatSelectModule} from '@angular/material';
+import { OrderModule } from 'ngx-order-pipe';
+import {ConfirmationPopoverModule} from 'angular-confirmation-popover';
 
 //  -----------------
 import { CategoriesService } from './../../services/categories.service';
@@ -43,7 +44,13 @@ const ROUTES: Routes = [
   FormsModule,
   MatInputModule,
   MatButtonModule,
-  MatCardModule
+  MatCardModule,
+  MatSelectModule,
+  OrderModule,
+  ConfirmationPopoverModule,
+  ConfirmationPopoverModule.forRoot({
+    confirmButtonType: 'warning' // set defaults here
+  })
   ],
   declarations: [
     HomeComponent,

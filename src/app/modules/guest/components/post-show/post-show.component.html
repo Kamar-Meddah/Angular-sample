@@ -27,6 +27,9 @@
         <div class="col-sm-4 col-4">
             <br><br><br>
             <app-categories></app-categories>
+            <button class="btn btn-default" mwlConfirmationPopover [title]="title" [message]="message" placement="center" (confirm)="confirmClicked = true" (cancel)="cancelClicked = true">
+                Click me!
+                </button>
         </div>
     </div>
 
@@ -35,15 +38,15 @@
 
     <div class="row">
         <div class="col-sm-6 col-6">
-            <form class="example-form">
+            <form class="example-form" (ngSubmit)="commenter()" ngNativeValidate>
                 <h3><i class="fa fa-commenting" aria-hidden="true"></i> <em>Poster Vos Commentaires</em></h3>
                 <br>
                 <mat-form-field class="example-full-width">
-                    <input matInput type="text" id="name" name="name" placeholder="Enter Ur Name" required>
+                    <input matInput type="text" [(ngModel)]="name" name="name" placeholder="Enter Ur Name" required>
                 </mat-form-field>
                 <br>
                 <mat-form-field class="example-full-width">
-                    <textarea matInput id="comment" name="comment" placeholder="Enter Ur comment" rows="7" required></textarea>
+                    <textarea matInput [(ngModel)]="comment" name="comment" placeholder="Enter Ur comment" rows="7" required></textarea>
                 </mat-form-field>
                 <br>
 
@@ -61,15 +64,18 @@
             <div>
                 <h3><i class="fa fa-comments" aria-hidden="true"></i> <em>Commentaires</em> :</h3>
                 <div class="text-right">
-                    <select>
-                                <option value="+date">oldest</option>   
-                                 <option value="-date" selected>newest</option>   
-                            </select>
+                    <mat-form-field>
+                        <mat-select placeholder="Sort" [(ngModel)]="order" name="food">
+                            <mat-option value="+date">oldest</mat-option>
+                            <mat-option value="-date" selected>newest</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <br>
                     <br>
                 </div>
             </div>
 
-            <div *ngFor="let comment of comments">
+            <div *ngFor="let comment of comments | orderBy:order:true">
                 <h6><b>{{comment.name}} : </b></h6>
                 <div class="row ">
                     <div class="col-sm-1 col-1"></div>

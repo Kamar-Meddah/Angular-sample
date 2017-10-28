@@ -24,6 +24,14 @@ export class PostShowComponent implements OnInit {
   private categorie: String;
   private categorieId: Number;
   private postId: Number;
+  private name: String;
+  private comment: String;
+
+  // ---
+  public title = 'Popover title';
+  public message = 'Popover description';
+  public confirmClicked = false;
+  public cancelClicked = false;
 
 
   constructor(
@@ -45,13 +53,10 @@ export class PostShowComponent implements OnInit {
     this.getPost().then((postData) => {
       this.loading = false;
       this.post = postData;
-      console.log(this.post)
       this.getImages().then((imagesData) => {
         this.images = imagesData;
-        console.log(this.images)
         this.getComments().then((commentsData) => {
           this.comments = commentsData;
-          console.log(this.comments)
         }, (err) => {
           console.log(err); // log errors
         });
@@ -108,6 +113,18 @@ export class PostShowComponent implements OnInit {
           reject (err);
         });
       });
+
+  }
+
+  private commenter (): void {
+
+    this.Comments.commenter(this.postId, this.name, this.comment).then((data) => {
+      this.comments.push({'id': data.id, 'name': this.name, 'content': this.comment, 'date': Date.now() });
+      this.name = '';
+      this.comment = '';
+    }, (err) => {
+      console.log(err) ;
+    });
 
   }
 

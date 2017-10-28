@@ -34,7 +34,7 @@ const ROUTES: Routes = [
   ),
   HttpClientModule,
   BrowserAnimationsModule,
-  FormsModule
+  FormsModule,
   ],
   providers: [
     UsersService

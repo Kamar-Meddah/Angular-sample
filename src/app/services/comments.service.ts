@@ -36,7 +36,7 @@ export class CommentsService {
   public delete (id: Number): Promise<any> {
 
     return new Promise((resolve, reject) => {
-      this.Http.post('http://localhost/', { request: 'Comments.delete', id: id, })
+      this.Http.post('http://localhost/', { request: 'Comments.delete', id: id})
       .subscribe((data) => {
         resolve(data);
       }, (err) => {
