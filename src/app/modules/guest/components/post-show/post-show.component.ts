@@ -7,6 +7,8 @@ import { PostsService } from './../../../../services/posts.service';
 import { ActivatedRoute } from '@angular/router';
 import { Categorie } from './../../../../interfaces/categorie';
 import { Image } from './../../../../interfaces/image';
+import {SnotifyService} from 'ng-snotify';
+
 
 
 @Component({
@@ -26,10 +28,11 @@ export class PostShowComponent implements OnInit {
   private postId: Number;
   private name: String;
   private comment: String;
+  private logged: Boolean;
 
   // ---
-  public title = 'Popover title';
-  public message = 'Popover description';
+  public title = 'Delete confirm';
+  public message = "delete selected comment ?";
   public confirmClicked = false;
   public cancelClicked = false;
 
@@ -39,12 +42,17 @@ export class PostShowComponent implements OnInit {
               private Images: ImagesService,
               private Users: UsersService,
               private Posts: PostsService,
-              private router: ActivatedRoute
+              private router: ActivatedRoute,
+              private notify: SnotifyService
+            
             ) {
               this.loading = true;
               this.post = {category: {}};
               this.images = [];
               this.comments = [];
+              this.Users.isLogged().then((data) => {
+                this.logged = data;
+              })
              }
  
   ngOnInit() {
@@ -119,6 +127,12 @@ export class PostShowComponent implements OnInit {
   private commenter (): void {
 
     this.Comments.commenter(this.postId, this.name, this.comment).then((data) => {
+      this.notify.success('Comment Successfully posted', {
+        timeout: 5000,
+        showProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true
+      });
       this.comments.push({'id': data.id, 'name': this.name, 'content': this.comment, 'date': Date.now() });
       this.name = '';
       this.comment = '';
@@ -126,6 +140,21 @@ export class PostShowComponent implements OnInit {
       console.log(err) ;
     });
 
+  }
+
+  private delete(id: Number, index: number) {
+
+    this.Comments.delete(id).then((data) => {
+      this.notify.success('Comment Successfully deleted', {
+        timeout: 5000,
+        showProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true
+      });
+      this.comments.splice(index,1);
+    }, (err) => {
+      console.log(err)
+    })
   }
 
 }

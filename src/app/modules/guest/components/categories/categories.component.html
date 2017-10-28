@@ -1,13 +1,13 @@
 <mat-card>
     <mat-card-header>
-        <div mat-card-avatar style="font-size:2em"><i class="fa fa-folder-open-o" aria-hidden="true"></i></div>
-        <mat-card-title style="font-size:2em">
+        <div mat-card-avatar style="font-size:2.8vw"><i class="fa fa-folder-open-o" aria-hidden="true"></i></div>
+        <mat-card-title style="font-size:2.8vw">
             <em> Categories</em>
         </mat-card-title>
 
     </mat-card-header>
     <mat-card-content>
-        <li class="list-unstyled" *ngFor="let categorie of categories">
+        <li class="list-unstyled" *ngFor="let categorie of categories" style="font-size:1.3vw">
             <a routerLink="/{{categorie.titre}}/{{categorie.id}}/1">{{categorie.titre}}</a>
         </li>
     </mat-card-content>

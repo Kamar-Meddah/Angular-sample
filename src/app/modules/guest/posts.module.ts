@@ -8,6 +8,8 @@ import { FormsModule } from '@angular/forms';
 import {MatInputModule, MatButtonModule, MatCardModule, MatSelectModule} from '@angular/material';
 import { OrderModule } from 'ngx-order-pipe';
 import {ConfirmationPopoverModule} from 'angular-confirmation-popover';
+import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
+
 
 //  -----------------
 import { CategoriesService } from './../../services/categories.service';
@@ -49,8 +51,9 @@ const ROUTES: Routes = [
   OrderModule,
   ConfirmationPopoverModule,
   ConfirmationPopoverModule.forRoot({
-    confirmButtonType: 'warning' // set defaults here
-  })
+    confirmButtonType: 'danger' // set defaults here
+  }),
+  SnotifyModule
   ],
   declarations: [
     HomeComponent,
@@ -64,7 +67,9 @@ const ROUTES: Routes = [
     PostsService,
     ImagesService,
     UsersService,
-    CommentsService
+    CommentsService,
+    { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
+    SnotifyService
   ],
   exports: [
     RouterModule

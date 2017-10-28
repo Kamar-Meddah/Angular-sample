@@ -6,6 +6,7 @@ import { PostsModule } from './modules/guest/posts.module';
 import { RouterModule, Routes } from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 
 //  ----------------- Components ---------------
 import { AppComponent } from './app.component';
@@ -35,9 +36,13 @@ const ROUTES: Routes = [
   HttpClientModule,
   BrowserAnimationsModule,
   FormsModule,
+  SnotifyModule
+
   ],
   providers: [
-    UsersService
+    UsersService,
+    { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
+    SnotifyService
   ],
   bootstrap: [AppComponent]
 })
