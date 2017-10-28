@@ -18,6 +18,7 @@ export class PostCategorieComponent implements OnInit {
   private pages: Array<Number>;
   private url: String;
   private categorie: String;
+  private categorieId: Number;
   private currentPage: String;
   private loop: Boolean;
 
@@ -34,14 +35,15 @@ export class PostCategorieComponent implements OnInit {
 
     ngOnInit() {
 
-      this.route.url.subscribe((url) => {
-        this.categorie = url[1].path;
-        this.setTitle(`Search: ${this.categorie}`);
-        if ( this.url !== url[1].path || this.currentPage !== url[2].path ) {
+      this.route.params.subscribe((params) => {
+        this.categorie = params.categorie;
+        this.categorieId = params.category_id;
+        this.setTitle(`${params.categorie}`);
+        if ( this.url !== params.category_id || this.currentPage !== params.page ) {
           this.loading = true;
           this.getPage();
           this.getAll().then((data) => {
-            if (this.url !== url[1].path) {
+            if (this.url !== params.category_id) {
               this.pages = [];
               this.loop = true;
             }
@@ -50,9 +52,10 @@ export class PostCategorieComponent implements OnInit {
               this.pages.push(i);
             }
           }
-          if (this.url !== url[2].path) {
+          if (this.url !== params.category_id) {
             this.loop = false;
           }
+          console.log(data)
             this.posts = data.art;
             this.loading = false;
             this.disabled = this.page < data.nbpage ? false : true;
@@ -74,7 +77,7 @@ export class PostCategorieComponent implements OnInit {
     private getAll (): Promise<any> {
       return new Promise((resolve, reject) => {
         this.route.params.subscribe((params) => {
-          this.service.search(params.post, this.page).then((data) => {
+          this.service.getAllFromCategorie(params.category_id, this.page).then((data) => {
             resolve (data);
           }, (err) => {
             reject(err);

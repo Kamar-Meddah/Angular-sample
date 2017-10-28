@@ -34,14 +34,14 @@ export class SearchComponent implements OnInit {
 
     ngOnInit() {
 
-      this.route.url.subscribe((url) => {
-        this.query = url[1].path;
+      this.route.params.subscribe((params) => {
+        this.query = params.post;
         this.setTitle(`Search: ${this.query}`);
-        if ( this.url !== url[1].path || this.currentPage !== url[2].path ) {
+        if ( this.url !== params.post || this.currentPage !== params.page ) {
           this.loading = true;
           this.getPage();
           this.getAll().then((data) => {
-            if (this.url !== url[1].path) {
+            if (this.url !== params.post) {
               this.pages = [];
               this.loop = true;
             }
@@ -50,7 +50,7 @@ export class SearchComponent implements OnInit {
               this.pages.push(i);
             }
           }
-          if (this.url !== url[2].path) {
+          if (this.url !== params.post) {
             this.loop = false;
           }
             this.posts = data.art;
@@ -58,7 +58,6 @@ export class SearchComponent implements OnInit {
             this.disabled = this.page < data.nbpage ? false : true;
           });
         }
-
       });
 
     }

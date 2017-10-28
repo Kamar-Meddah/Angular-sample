@@ -24,8 +24,8 @@ import { PostShowComponent } from './components/post-show/post-show.component';
 const ROUTES: Routes = [
   {path: ':page', component: HomeComponent},
   {path: 'search/:post/:page', component: SearchComponent},
-  {path: ':categorie@:category_id/:page', component: PostCategorieComponent},
-  {path: ':categorie/:post/:postId', component: PostShowComponent},
+  {path: ':categorie/:category_id/:page', component: PostCategorieComponent},
+  {path: ':categorie/:category_id/:post/:postId', component: PostShowComponent},
   {path : '', redirectTo: '/1', pathMatch: 'full'}
 ];
 

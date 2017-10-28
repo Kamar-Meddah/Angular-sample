@@ -3,6 +3,7 @@
 @import "~font-awesome/css/font-awesome.min.css";
 @import "~@angular/material/prebuilt-themes/purple-green.css";
 @import "~bootstrap/dist/css/bootstrap.min.css";
+@import "../node_modules/lightbox2/dist/css/lightbox.min.css";
 
 /* custom style  */
 

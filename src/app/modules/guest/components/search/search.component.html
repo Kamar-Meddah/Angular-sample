@@ -14,12 +14,12 @@
         </div>
         <div [hidden]="loading">
             <div *ngFor="let post of posts">
-                <h2><a routerLink="/{{post.category.titre}}/{{post.titre}}/{{post.id}}">{{post.titre}}</a></h2>
-                <a routerLink="/{{post.category.titre}}@{{post.category.id}}/1"><i class="fa fa-folder-open-o" aria-hidden="true"></i><em class="shadow">{{post.category.titre}}</em></a>
+                <h2><a routerLink="/{{post.category.titre}}}/{{post.category.id}}/{{post.titre}}/{{post.id}}">{{post.titre}}</a></h2>
+                <a routerLink="/{{post.category.titre}}/{{post.category.id}}/1"><i class="fa fa-folder-open-o" aria-hidden="true"></i><em class="shadow">{{post.category.titre}}</em></a>
                 <br><br>
                 <div>
                     <p style="line-height:1em" [innerHtml]="post.contenu"></p>
-                    <a routerLink="/{{post.category.titre}}/{{post.titre}}/{{post.id}}">... Voir la suite</a>
+                    <a routerLink="/{{post.category.titre}}}/{{post.category.id}}/{{post.titre}}/{{post.id}}}">... Voir la suite</a>
 
                     <div class="text-right"><em>{{post.date | timeSince}} ago</em></div>
                 </div>
