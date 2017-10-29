@@ -32,7 +32,7 @@ body {
     background-size: cover;
     color: white;
     */
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
 a,
@@ -121,4 +121,10 @@ label,
 
 .m {
     font-size: 200%;
+}
+
+div>p>h1 {
+    font-size: 1.2em;
+    line-height: 1em;
+    font-weight: 400;
 }
