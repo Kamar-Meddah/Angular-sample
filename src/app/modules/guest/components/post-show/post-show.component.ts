@@ -19,16 +19,17 @@ import {SnotifyService} from 'ng-snotify';
 export class PostShowComponent implements OnInit {
 
 
-  private post: Object;
-  private images: Array<Object>;
-  private comments: Array<Object>;
-  private loading: Boolean;
-  private categorie: String;
-  private categorieId: Number;
-  private postId: Number;
-  private name: String;
-  private comment: String;
-  private logged: Boolean;
+  public post: any;
+  public images: Array<Object>;
+  public comments: Array<Object>;
+  public loading: Boolean;
+  public categorie: String;
+  public categorieId: Number;
+  public postId: Number;
+  public name: String;
+  public comment: String;
+  public logged: Boolean;
+  public order: String;
 
   private notifyConfig: Object;
   // ---
@@ -131,7 +132,7 @@ export class PostShowComponent implements OnInit {
 
   }
 
-  private commenter (): void {
+  public commenter (): void {
 
     this.Comments.commenter(this.postId, this.name, this.comment).then((data) => {
       this.notify.success('Comment Successfully posted', this.notifyConfig);
@@ -144,7 +145,7 @@ export class PostShowComponent implements OnInit {
 
   }
 
-  private delete(id: Number, index: number) {
+  public delete(id: Number, index: number) {
 
     this.Comments.delete(id).then((data) => {
       this.notify.success('Comment Successfully deleted', this.notifyConfig);

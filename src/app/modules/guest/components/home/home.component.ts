@@ -12,25 +12,25 @@ import { Post } from './../../../../interfaces/post';
 })
 export class HomeComponent implements OnInit {
 
-  private page: Number;
-  private nbpage: Number;
-  private posts: Array<Post>;
-  private loading: Boolean;
-  private disabled: Boolean;
-  private pages: Array<Number>;
+  public page: number;
+  public nbpage: number;
+  public posts: Array<Post>;
+  public loading: Boolean;
+  public disabled: Boolean;
+  public pages: Array<number>;
   private url: String;
-  private loop: Number;
+  private loop: Boolean;
 
     public constructor(private titleService: Title, private service: PostsService, private route: ActivatedRoute) {
       this.setTitle('Home');
-      this.loop = 0;
+      this.loop = false;
       this.pages = [];
       this.loading = true;
       this.getPage();
 
      }
 
-    private setTitle( newTitle: string): void {
+     public setTitle( newTitle: string): void {
       this.titleService.setTitle( newTitle );
     }
 
@@ -40,11 +40,11 @@ export class HomeComponent implements OnInit {
           this.getPage();
           this.url = url[0].path;
       this.getAll().then((data) => {
-        if (this.loop === 0) {
+        if (this.loop === false) {
         for (let i = 1; i <= data.nbpage; i++) {
           this.pages.push(i);
         }
-        this.loop = 1;
+        this.loop = true;
       }
         this.posts = data.art;
         this.loading = false;

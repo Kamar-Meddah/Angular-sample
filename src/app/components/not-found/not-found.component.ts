@@ -10,7 +10,7 @@ export class NotFoundComponent implements OnInit {
 
   public constructor(private titleService: Title) { }
 
-  private setTitle( newTitle: string): void {
+  public setTitle( newTitle: string): void {
     this.titleService.setTitle( newTitle );
   }
 

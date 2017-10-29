@@ -9,8 +9,8 @@ import { Router } from '@angular/router';
 })
 export class NavBarComponent implements OnInit {
 
-  private navBar: Boolean;
-  private input: String;
+  public navBar: Boolean;
+  public input: String;
 
   constructor(private users: UsersService, private route: Router) { }
 
@@ -18,7 +18,7 @@ export class NavBarComponent implements OnInit {
     this.switchNavBar();
   }
 
-  private switchNavBar (): void {
+  public switchNavBar (): void {
 
     this.users.isLogged().then((data) => {
     this.navBar = data;
@@ -26,7 +26,7 @@ export class NavBarComponent implements OnInit {
 
   }
 
-  private search (): void {
+  public search (): void {
 
     this.route.navigate([`/search/${this.input}/1`]);
 

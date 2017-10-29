@@ -11,14 +11,14 @@ import { Post } from './../../../../interfaces/post';
 })
 export class SearchComponent implements OnInit {
 
-  private page: Number;
-  private nbpage: Number;
-  private posts: Array<Post>;
-  private loading: Boolean;
-  private disabled: Boolean;
-  private pages: Array<Number>;
+  public page: number;
+  public nbpage: number;
+  public posts: Array<Post>;
+  public loading: Boolean;
+  public disabled: Boolean;
+  public pages: Array<number>;
   private url: String;
-  private query: String;
+  public query: String;
   private currentPage: String;
   private loop: Boolean;
 

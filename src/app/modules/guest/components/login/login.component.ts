@@ -10,8 +10,8 @@ import { SnotifyService } from 'ng-snotify';
 })
 export class LoginComponent implements OnInit {
 
-  private username: String;
-  private password: String;
+  public username: String;
+  public password: String;
   //  -------
   private notifyConfig: Object;
 
@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
     this.isLogged();
   }
 
-  private login (): void {
+  public login (): void {
 
     this.Users.login(this.username, this.password).then((data) => {
       if (data === true) {
