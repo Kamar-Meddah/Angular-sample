@@ -30,9 +30,10 @@ export class PostShowComponent implements OnInit {
   private comment: String;
   private logged: Boolean;
 
+  private notifyConfig: Object;
   // ---
   public title = 'Delete confirm';
-  public message = "delete selected comment ?";
+  public message = 'delete selected comment ?';
   public confirmClicked = false;
   public cancelClicked = false;
 
@@ -44,7 +45,7 @@ export class PostShowComponent implements OnInit {
               private Posts: PostsService,
               private router: ActivatedRoute,
               private notify: SnotifyService
-            
+
             ) {
               this.loading = true;
               this.post = {category: {}};
@@ -52,7 +53,13 @@ export class PostShowComponent implements OnInit {
               this.comments = [];
               this.Users.isLogged().then((data) => {
                 this.logged = data;
-              })
+              });
+              this.notifyConfig = {
+                timeout: 5000,
+                showProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true
+              };
              }
  
   ngOnInit() {
@@ -127,12 +134,7 @@ export class PostShowComponent implements OnInit {
   private commenter (): void {
 
     this.Comments.commenter(this.postId, this.name, this.comment).then((data) => {
-      this.notify.success('Comment Successfully posted', {
-        timeout: 5000,
-        showProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true
-      });
+      this.notify.success('Comment Successfully posted', this.notifyConfig);
       this.comments.push({'id': data.id, 'name': this.name, 'content': this.comment, 'date': Date.now() });
       this.name = '';
       this.comment = '';
@@ -145,16 +147,11 @@ export class PostShowComponent implements OnInit {
   private delete(id: Number, index: number) {
 
     this.Comments.delete(id).then((data) => {
-      this.notify.success('Comment Successfully deleted', {
-        timeout: 5000,
-        showProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true
-      });
-      this.comments.splice(index,1);
+      this.notify.success('Comment Successfully deleted', this.notifyConfig);
+      this.comments.splice(index, 1);
     }, (err) => {
-      console.log(err)
-    })
+      console.log(err);
+    });
   }
 
 }

@@ -18,7 +18,9 @@
                 <a routerLink="/{{post.category.titre}}/{{post.category.id}}/1"><i class="fa fa-folder-open-o" aria-hidden="true"></i><em class="shadow">{{post.category.titre}}</em></a>
                 <br><br>
                 <div>
-                    <p style="line-height:1em" [innerHtml]="post.contenu"></p>
+                    <div style="line-height:1em; font-weight:normal; font-size: 1.4em">
+                        <p [innerHtml]="post.contenu"></p>
+                    </div>
                     <a routerLink="/{{post.category.titre}}}/{{post.category.id}}/{{post.titre}}/{{post.id}}}">... Voir la suite</a>
 
                     <div class="text-right"><em>{{post.date | timeSince}} ago</em></div>

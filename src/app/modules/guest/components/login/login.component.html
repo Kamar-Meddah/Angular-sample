@@ -1,0 +1,18 @@
+<form class="form-signin example-form" (ngSubmit)="login()" ngNativeValidate>
+
+    <div class="container col-sm-8">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <mat-form-field class="example-full-width">
+            <input matInput type="text" [(ngModel)]="username" name="username" placeholder="Username" autofocus required>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+            <input matInput name="password" type="password" [(ngModel)]="password" placeholder="Password" required>
+        </mat-form-field>
+        <br>
+
+        <div class="text-right">
+            <button mat-mini-fab class="accent" type="submit"><i class="fa fa-sign-in" aria-hidden="true"></i></button>
+        </div>
+    </div>
+</form>

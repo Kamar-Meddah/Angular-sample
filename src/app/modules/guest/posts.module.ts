@@ -24,9 +24,11 @@ import { CategoriesComponent } from './components/categories/categories.componen
 import { SearchComponent } from './components/search/search.component';
 import { PostCategorieComponent } from './components/post-categorie/post-categorie.component';
 import { PostShowComponent } from './components/post-show/post-show.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 const ROUTES: Routes = [
+  {path: 'login', component: LoginComponent},
   {path: ':page', component: HomeComponent},
   {path: 'search/:post/:page', component: SearchComponent},
   {path: ':categorie/:category_id/:page', component: PostCategorieComponent},
@@ -60,7 +62,8 @@ const ROUTES: Routes = [
     CategoriesComponent,
     SearchComponent,
     PostCategorieComponent,
-    PostShowComponent
+    PostShowComponent,
+    LoginComponent
   ],
   providers: [
     CategoriesService,

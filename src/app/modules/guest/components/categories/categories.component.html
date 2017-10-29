@@ -7,7 +7,7 @@
 
     </mat-card-header>
     <mat-card-content>
-        <li class="list-unstyled" *ngFor="let categorie of categories" style="font-size:1.3vw">
+        <li class="list-unstyled" *ngFor="let categorie of categories">
             <a routerLink="/{{categorie.titre}}/{{categorie.id}}/1">{{categorie.titre}}</a>
         </li>
     </mat-card-content>

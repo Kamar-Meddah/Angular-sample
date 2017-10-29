@@ -6,7 +6,6 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "../node_modules/lightbox2/dist/css/lightbox.min.css";
 
-
 /* custom style  */
 
 :root {
@@ -33,7 +32,7 @@ body {
     background-size: cover;
     color: white;
     */
-    font-family: tahoma, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 a,

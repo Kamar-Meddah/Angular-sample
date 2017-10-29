@@ -58,3 +58,12 @@
     background-color: white;
     overflow: hidden;
 }
+
+.dropdown-menu-right {
+    right: 0;
+    left: auto;
+}
+
+.padding {
+    padding-right: 5px
+}
