@@ -7,7 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
-import { CookieService } from 'ngx-cookie-service';
+import { AdminModule } from './modules/admin/admin.module';
 
 //  ----------------- Components ---------------
 import { AppComponent } from './app.component';
@@ -16,6 +16,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 
 //  --------------- Services -------------------
 import { UsersService } from './services/users.service';
+import { CookieService } from 'ngx-cookie-service';
 
 //  -----------------
 const ROUTES: Routes = [
@@ -30,6 +31,7 @@ const ROUTES: Routes = [
   ],
   imports: [
   BrowserModule,
+  AdminModule,
   PostsModule,
   RouterModule.forRoot(
   ROUTES
@@ -38,7 +40,6 @@ const ROUTES: Routes = [
   BrowserAnimationsModule,
   FormsModule,
   SnotifyModule
-
   ],
   providers: [
     UsersService,

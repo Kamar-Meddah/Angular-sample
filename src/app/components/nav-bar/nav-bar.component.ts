@@ -11,8 +11,7 @@ import { SnotifyService } from 'ng-snotify';
 })
 export class NavBarComponent implements OnInit {
 
-  @Input()
-   navBar: Boolean;
+  public navBar: Boolean;
   public input: String;
   private notifyConfig: Object;
 
