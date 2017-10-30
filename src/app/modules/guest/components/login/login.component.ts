@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { UsersService } from './../../../../services/users.service';
 import { Router } from '@angular/router';
 import { SnotifyService } from 'ng-snotify';
+import { CookieService } from 'ngx-cookie-service';
+import { Title } from '@angular/platform-browser';
+import { NavBarComponent } from './../../../../components/nav-bar/nav-bar.component';
+
 
 @Component({
   selector: 'app-login',
@@ -15,27 +19,35 @@ export class LoginComponent implements OnInit {
   //  -------
   private notifyConfig: Object;
 
-  constructor(private Users: UsersService, private route: Router, private notify: SnotifyService) {
-
-    this.notifyConfig = {
-      timeout: 5000,
-      showProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true
-    };
-
-   }
+  constructor(
+             private Users: UsersService,
+             private route: Router,
+             private notify: SnotifyService,
+             private cookie: CookieService,
+             private titleService: Title
+            ) {
+              this.notifyConfig = {
+                timeout: 5000,
+                showProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true
+              };
+            }
 
   ngOnInit() {
+    this.setTitle(`Login`);
     this.isLogged();
   }
 
   public login (): void {
 
     this.Users.login(this.username, this.password).then((data) => {
-      if (data === true) {
+      if (data.bool === true) {
+        this.cookie.set('id', data.id);
         this.notify.success('Welcome to the administration', this.notifyConfig);
+        this.Users.change();
         this.route.navigate([`/admin/home`]);
+
       }else {
         this.notify.error('Wrong username or password', this.notifyConfig);
       }
@@ -44,12 +56,20 @@ export class LoginComponent implements OnInit {
   }
 
   private isLogged (): void {
-    this.Users.isLogged().then((data) => {
-      if (data === true) {
-        this.notify.warning('already logged', this.notifyConfig);
-        this.route.navigate([`/admin/home`]);
-      }
-    });
+
+      this.Users.isLogged().then((data) => {
+        if (data) {
+          this.notify.warning('already logged', this.notifyConfig);
+          this.route.navigate([`/admin/home`]);
+        }
+      });
+
+  }
+
+  private setTitle( newTitle: string): void {
+
+    this.titleService.setTitle( newTitle );
+
   }
 
 }

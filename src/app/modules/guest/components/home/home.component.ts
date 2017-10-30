@@ -21,14 +21,17 @@ export class HomeComponent implements OnInit {
   private url: String;
   private loop: Boolean;
 
-    public constructor(private titleService: Title, private service: PostsService, private route: ActivatedRoute) {
-      this.setTitle('Home');
-      this.loop = false;
-      this.pages = [];
-      this.loading = true;
-      this.getPage();
-
-     }
+    constructor(
+                private titleService: Title,
+                private service: PostsService,
+                private route: ActivatedRoute
+              ) {
+                this.setTitle('Home');
+                this.loop = false;
+                this.pages = [];
+                this.loading = true;
+                this.getPage();
+              }
 
      public setTitle( newTitle: string): void {
       this.titleService.setTitle( newTitle );

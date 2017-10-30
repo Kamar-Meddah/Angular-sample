@@ -7,6 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
+import { CookieService } from 'ngx-cookie-service';
 
 //  ----------------- Components ---------------
 import { AppComponent } from './app.component';
@@ -42,7 +43,8 @@ const ROUTES: Routes = [
   providers: [
     UsersService,
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
-    SnotifyService
+    SnotifyService,
+    CookieService
   ],
   bootstrap: [AppComponent]
 })

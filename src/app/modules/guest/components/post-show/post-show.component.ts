@@ -8,6 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Categorie } from './../../../../interfaces/categorie';
 import { Image } from './../../../../interfaces/image';
 import {SnotifyService} from 'ng-snotify';
+import { Title } from '@angular/platform-browser';
 
 
 
@@ -45,7 +46,8 @@ export class PostShowComponent implements OnInit {
               private Users: UsersService,
               private Posts: PostsService,
               private router: ActivatedRoute,
-              private notify: SnotifyService
+              private notify: SnotifyService,
+              private titleService: Title
 
             ) {
               this.loading = true;
@@ -62,11 +64,12 @@ export class PostShowComponent implements OnInit {
                 pauseOnHover: true
               };
              }
- 
+
   ngOnInit() {
 
     this.getParams();
     this.getPost().then((postData) => {
+      this.setTitle(`${postData.titre}`);
       this.loading = false;
       this.post = postData;
       this.getImages().then((imagesData) => {
@@ -153,6 +156,13 @@ export class PostShowComponent implements OnInit {
     }, (err) => {
       console.log(err);
     });
+
+  }
+
+  private setTitle( newTitle: string): void {
+
+    this.titleService.setTitle( newTitle );
+  
   }
 
 }

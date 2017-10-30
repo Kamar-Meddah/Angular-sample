@@ -1,15 +1,12 @@
+import { Categorie } from './categorie';
+
 export interface Post {
-    createdAt: Date;
-    updatedAt: Date;
+    createdAt?: Date;
+    updatedAt?: Date;
     id: Number;
     titre: String;
     contenu: String;
-    date: Date;
-    categoryId: Number;
-    category: {
-      id: Number;
-      titre: String;
-      createdAt: Date;
-      updatedAt: Date;
-    };
+    date?: Date;
+    categoryId?: Number;
+    category?: Categorie;
 }

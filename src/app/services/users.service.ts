@@ -1,20 +1,19 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter, Output} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable()
 export class UsersService {
 
-  constructor(private http: HttpClient) { }
+  @Output()
+  logged: EventEmitter<any> = new EventEmitter();
+
+  constructor(private http: HttpClient, private cookie: CookieService) { }
 
   public isLogged (): Promise<any> {
 
     return new Promise ((resolve, reject) => {
-      this.http.post('http://localhost/', {request: 'Users.logged' })
-      .subscribe((data) => {
-        resolve(data);
-      }, (err) => {
-        reject(err);
-      });
+        resolve(this.cookie.check('id'));
     });
 
   }
@@ -45,16 +44,9 @@ export class UsersService {
 
   }
 
-  public logout (): Promise<any> {
+  public logout (): void {
 
-    return new Promise((resolve, reject) => {
-      this.http.post('http://localhost/', { request: 'Users.logout' })
-      .subscribe((data) => {
-        resolve (data);
-      }, (err) => {
-        reject (err);
-      });
-    });
+      this.cookie.delete('id');
 
   }
 
@@ -95,6 +87,14 @@ export class UsersService {
       });
     });
 
+  }
+
+  public getEmitedValue (): any {
+    return this.logged;
+  }
+
+  public change (): any {
+    this.logged.emit(true);
   }
 
 }

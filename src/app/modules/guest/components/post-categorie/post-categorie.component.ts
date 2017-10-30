@@ -23,12 +23,15 @@ export class PostCategorieComponent implements OnInit {
   private currentPage: String;
   private loop: Boolean;
 
-    public constructor(private titleService: Title, private service: PostsService, private route: ActivatedRoute) {
-
-      this.loop = true;
-      this.pages = [];
-      this.getPage();
-     }
+    constructor(
+                private titleService: Title,
+                private service: PostsService,
+                private route: ActivatedRoute
+              ) {
+                this.loop = true;
+                this.pages = [];
+                this.getPage();
+              }
 
     private setTitle( newTitle: string): void {
       this.titleService.setTitle( newTitle );

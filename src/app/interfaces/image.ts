@@ -1,7 +1,7 @@
 export interface Image {
-    createdAt: Date;
+    createdAt?: Date;
     id: Number;
     name: String;
-    updatedAt: Date;
+    updatedAt?: Date;
     articleId: Number;
 }
