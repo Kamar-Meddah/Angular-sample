@@ -18,8 +18,7 @@ export class CategoriesAddComponent implements OnInit {
     private titleService: Title,
     private notify: SnotifyService
   ) {
-    this.setTitle('categories');
-    this.notifyConfig = {
+     this.notifyConfig = {
       timeout: 5000,
       showProgressBar: false,
       closeOnClick: true,

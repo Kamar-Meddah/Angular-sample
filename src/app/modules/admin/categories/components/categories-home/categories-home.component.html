@@ -27,7 +27,7 @@
                     <td>{{categorie.titre}}</td>
                     <td class="text-center" [hidden]="categorie.deleted">
                         <a mat-mini-fab aria-hidden="true" routerLink="/admin/edit/categories/{{categorie.titre}}/{{categorie.id}}" class="warning" style="margin:0.5em;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                        <button mat-mini-fab aria-hidden="true" class="danger" type="button" mwlConfirmationPopover [title]="title" [message]="message" placement="center" (confirm)="delete(categorie.id,i)">
+                        <button mat-mini-fab aria-hidden="true" class="danger" type="button" mwlConfirmationPopover [title]="title" [message]="message" (confirm)="delete(categorie.id,i)">
                             <i class="fa fa-trash" aria-hidden="true"></i>
                         </button>
                     </td>

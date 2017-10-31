@@ -28,8 +28,9 @@ const ROUTES: Routes = [
        {path: 'categories',
       children: [
         {path: 'add', component: CategoriesAddComponent},
-        {path: 'edit', component: CategoriesEditComponent},
-        {path: 'home/:page', component: CategoriesHomeComponent}
+        {path: 'home/:page', component: CategoriesHomeComponent},
+        {path: ':title/:id', component: CategoriesEditComponent}
+
       ]
      }
      ]
