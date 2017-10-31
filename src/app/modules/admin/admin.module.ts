@@ -1,27 +1,26 @@
+//   ------------- Modules -------------
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeComponent } from './components/home/home.component';
-import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
+import { MatInputModule, MatButtonModule, MatCardModule } from '@angular/material';
+import { CategoriesModule } from './categories/categories.module';
+
+//   ------------- Services -------------
 import { CookieService } from 'ngx-cookie-service';
 import { UsersService } from './../../services/users.service';
 import { AuthGuard } from './../../services/auth.guard';
+
+//   ------------- Components -------------
+import { HomeComponent } from './components/home/home.component';
 import { UsernameEditComponent } from './components/username-edit/username-edit.component';
 import { PasswordEditComponent } from './components/password-edit/password-edit.component';
-import { PostsService } from './../../services/posts.service';
-import { ImagesService } from './../../services/images.service';
-import { CommentsService } from './../../services/comments.service';
-import { CategoriesService } from './../../services/categories.service';
-import { MatInputModule, MatButtonModule, MatSelectModule, MatCardModule } from '@angular/material';
-import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
-import { OrderModule } from 'ngx-order-pipe';
 
-
-
+//   ------------- Routes ------------
 const ROUTES: Routes = [
   {path: 'admin', canActivate: [AuthGuard],
   children: [
@@ -36,10 +35,9 @@ const ROUTES: Routes = [
 }
 ];
 
-
 @NgModule({
   imports: [
-  CommonModule,
+    CommonModule,
     BrowserModule,
     RouterModule.forRoot(
     ROUTES
@@ -53,13 +51,8 @@ const ROUTES: Routes = [
     MatInputModule,
     MatButtonModule,
     MatCardModule,
-    MatSelectModule,
-    OrderModule,
-    ConfirmationPopoverModule,
-    ConfirmationPopoverModule.forRoot({
-      confirmButtonType: 'danger' // set defaults here
-    }),
-    SnotifyModule
+    SnotifyModule,
+    CategoriesModule
   ],
   declarations: [
                  HomeComponent,
@@ -68,14 +61,14 @@ const ROUTES: Routes = [
                 ],
   providers: [
     AuthGuard,
-    CategoriesService,
-    PostsService,
-    ImagesService,
     UsersService,
-    CommentsService,
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
     SnotifyService,
     CookieService
+  ],
+  exports: [
+    RouterModule
   ]
 })
+
 export class AdminModule { }

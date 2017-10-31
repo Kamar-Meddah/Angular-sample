@@ -1,3 +1,4 @@
+//   ------------- Modules -------------
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
@@ -11,14 +12,14 @@ import {ConfirmationPopoverModule} from 'angular-confirmation-popover';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { CookieService } from 'ngx-cookie-service';
 
-//  -----------------
+//   ------------- Services -------------
 import { CategoriesService } from './../../services/categories.service';
 import { PostsService } from './../../services/posts.service';
 import { CommentsService } from './../../services/comments.service';
 import { ImagesService } from './../../services/images.service';
 import { UsersService } from './../../services/users.service';
 
-//  ------------------
+//   ------------- Components -------------
 import { HomeComponent } from './components/home/home.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { SearchComponent } from './components/search/search.component';
@@ -26,7 +27,7 @@ import { PostCategorieComponent } from './components/post-categorie/post-categor
 import { PostShowComponent } from './components/post-show/post-show.component';
 import { LoginComponent } from './components/login/login.component';
 
-
+//   ------------- Routes ------------
 const ROUTES: Routes = [
   {path: 'login', component: LoginComponent},
   {path: ':page', component: HomeComponent},
@@ -79,4 +80,5 @@ const ROUTES: Routes = [
     RouterModule
   ]
 })
+
 export class PostsModule { }
