@@ -1,3 +1,56 @@
-<p>
-  categories-home works!
-</p>
+<a mat-mini-fab aria-hidden="true" routerLink="/admin/home/" class="PT"><i class="fa fa-backward" aria-hidden="true"></i>
+  <br><br></a>
+
+<h1>
+    <i class="fa fa-folder-open-o" aria-hidden="true"></i><em> <b>Categories</b></em></h1>
+<br>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/admin/home"><i class="fa fa-home" aria-hidden="true"></i> <em>Administration</em></a></li>
+    <li class="breadcrumb-item active"><i class="fa fa-folder-open-o" aria-hidden="true"></i> <em>categories</em></li>
+</ol>
+<br>
+<div [hidden]="!loading" class="container admin text-center"><em><i style="font-size:15em;" class="fa fa-refresh fa-spin fa-3x fa-fw"></i><br>
+            <h1>Loading...</h1></em></div>
+<div [hidden]="loading">
+    <a mat-mini-fab aria-hidden="true" routerLink="/admin/edit/categories/add" class="success"><i class="fa fa-plus" aria-hidden="true"></i></a><br><br>
+
+    <div class="table-responsive">
+        <table class="table  table-hover table-bordered" style="overflow:hidden">
+            <thead class="thead-inverse">
+                <td class="text-center"><b><em>id</em></b></td>
+                <td class="text-center"><b><em>titre</em></b></td>
+                <td class="text-center"><b><em>action</em></b></td>
+            </thead>
+            <tbody>
+                <tr *ngFor="let categorie of categories; let i=index" [attr.data-index]='i'>
+                    <td class="text-center"><b>{{categorie.id}}</b></td>
+                    <td>{{categorie.titre}}</td>
+                    <td class="text-center" [hidden]="categorie.deleted">
+                        <a mat-mini-fab aria-hidden="true" routerLink="/admin/edit/categories/{{categorie.titre}}/{{categorie.id}}" class="warning" style="margin:0.5em;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                        <button mat-mini-fab aria-hidden="true" class="danger" type="button" mwlConfirmationPopover [title]="title" [message]="message" placement="center" (confirm)="delete(categorie.id,i)">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div [hidden]="pages.length == 0">
+        <br>
+        <ul class="pagination justify-content-center">
+            <li [class.disabled]="page <= 1" class="page-item">
+                <a class="page-link" routerLink="/admin/edit/categories/home/{{(page*1)-(1*1)}}">&laquo;</a>
+            </li>
+
+            <li [class.active]="Page === page" *ngFor="let Page of pages" class="page-item ">
+                <a routerLinkActive="active" class="page-link" routerLink="/admin/edit/categories/home/{{Page}}">{{Page}}</a>
+            </li>
+
+            <li [class.disabled]="disabled" class="page-item">
+                <a class="page-link" routerLink="/admin/edit/categories/home/{{(page*1)+(1*1)}}">&raquo;</a>
+            </li>
+
+        </ul>
+    </div>
+</div>

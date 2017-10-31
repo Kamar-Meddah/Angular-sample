@@ -1,6 +1,7 @@
 export interface Categorie {
-    createdAt?: Date;
+    createdAt ?: Date;
     id: Number;
     titre: String;
-    updatedAt?: Date;
+    updatedAt ?: Date;
+    deleted ?: Boolean;
 }

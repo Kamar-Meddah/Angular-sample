@@ -38,10 +38,10 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit() {
-      this.route.url.subscribe((url) => {
-        if ( this.url !== url[0].path ) {
+      this.route.params.subscribe((params) => {
+        if ( this.url !== params.page ) {
           this.getPage();
-          this.url = url[0].path;
+          this.url = params.page;
       this.getAll().then((data) => {
         if (this.loop === false) {
         for (let i = 1; i <= data.nbpage; i++) {

@@ -1,3 +1,27 @@
-<p>
-  categories-add works!
-</p>
+<mat-card>
+    <a mat-mini-fab aria-hidden="true" routerLink="/admin/edit/categories/home/1" class="PT"><i class="fa fa-backward" aria-hidden="true"></i>
+      <br><br></a>
+    <mat-card-header>
+        <mat-card-title class="cat">
+            <h1 class="form-signin-heading">Add new categorie</h1>
+        </mat-card-title>
+
+    </mat-card-header>
+    <mat-card-content>
+        <form class="example-form" (ngSubmit)="create()" ngNativeValidate>
+            <div class="container col-sm-8">
+                <br>
+                <br>
+                <mat-form-field class="example-full-width">
+                    <input matInput type="text" [(ngModel)]="titre" name="titre" placeholder="Title" autofocus required>
+                </mat-form-field>
+                <br>
+                <br>
+                <div class="text-right">
+                    <button mat-mini-fab class="success" type="submit"><i class="fa fa-check" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>

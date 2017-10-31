@@ -1,0 +1,15 @@
+.warning {
+    background-color: darkgoldenrod;
+}
+
+.danger {
+    background-color: firebrick;
+}
+
+.success {
+    background-color: green;
+}
+
+.PT {
+    background-color: var(--primary);
+}
