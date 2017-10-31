@@ -57,12 +57,10 @@ export class LoginComponent implements OnInit {
 
   private isLogged (): void {
 
-      this.Users.isLogged().then((data) => {
-        if (data) {
+        if (this.Users.isLogged()) {
           this.notify.warning('already logged', this.notifyConfig);
           this.route.navigate([`/admin/home`]);
         }
-      });
 
   }
 

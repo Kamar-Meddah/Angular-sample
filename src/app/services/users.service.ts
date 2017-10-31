@@ -10,11 +10,9 @@ export class UsersService {
 
   constructor(private http: HttpClient, private cookie: CookieService) { }
 
-  public isLogged (): Promise<any> {
+  public isLogged (): Boolean {
 
-    return new Promise ((resolve, reject) => {
-        resolve(this.cookie.check('id'));
-    });
+    return this.cookie.check('id');
 
   }
 
@@ -50,16 +48,13 @@ export class UsersService {
 
   }
 
-  public changeUsername (id: Number, username: String): Promise<any> {
+  public changeUsername (id: Number, username: String): void {
 
-    return new Promise ((reject, resolve) => {
       this.http.post('http://localhost/', { request: 'Users.usernameChange', 'id': id, 'username': username})
       .subscribe((data) => {
-        resolve (data);
       }, (err) => {
-        reject (err);
+        console.log(err);
       });
-    });
 
   }
 
@@ -68,19 +63,7 @@ export class UsersService {
     return new Promise ((resolve, reject) => {
       this.http.post('http://localhost/', { request: 'Users.passwordChange', 'id': id, 'password': password })
       .subscribe((data) => {
-        resolve (data);
-      }, (err) => {
-        reject (err);
-      });
-    });
-
-  }
-
-  public getUserId (): Promise<any> {
-
-    return new Promise ((resolve, reject) => {
-      this.http.post('http://localhost/', { request: 'Users.getUserId' })
-      .subscribe((data) => {
+        console.log(data)
         resolve (data);
       }, (err) => {
         reject (err);

@@ -54,9 +54,7 @@ export class PostShowComponent implements OnInit {
               this.post = {category: {}};
               this.images = [];
               this.comments = [];
-              this.Users.isLogged().then((data) => {
-                this.logged = data;
-              });
+              this.logged = this.Users.isLogged();
               this.notifyConfig = {
                 timeout: 5000,
                 showProgressBar: false,
