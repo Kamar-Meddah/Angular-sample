@@ -27,7 +27,7 @@ const ROUTES: Routes = [
   children: [
     {path: 'edit',
      children: [
-       {path: 'Posts',
+       {path: 'posts',
       children: [
         {path: 'add', component: PostsAddComponent},
         {path: 'home/:page', component: PostsHomeComponent},

@@ -160,7 +160,7 @@ export class PostShowComponent implements OnInit {
   private setTitle( newTitle: string): void {
 
     this.titleService.setTitle( newTitle );
-  
+
   }
 
 }

@@ -5,8 +5,9 @@ export interface Post {
     updatedAt?: Date;
     id: Number;
     titre: String;
-    contenu: String;
+    contenu?: String;
     date?: Date;
     categoryId?: Number;
     category?: Categorie;
+    deleted?: Boolean;
 }
