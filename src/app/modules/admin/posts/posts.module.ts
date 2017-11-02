@@ -7,8 +7,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
-import { MatInputModule, MatButtonModule, MatCardModule, MatSelectModule } from '@angular/material';
+import { MatInputModule, MatButtonModule, MatCardModule, MatSelectModule} from '@angular/material';
 import {ConfirmationPopoverModule} from 'angular-confirmation-popover';
+
 
 //   ------------- Services -------------
 import { AuthGuard } from './../../../services/auth.guard';
@@ -51,6 +52,7 @@ const ROUTES: Routes = [
     BrowserAnimationsModule,
     FormsModule,
     MatInputModule,
+    MatSelectModule,
     MatButtonModule,
     MatCardModule,
     ConfirmationPopoverModule,

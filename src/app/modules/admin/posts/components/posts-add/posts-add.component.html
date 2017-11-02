@@ -8,7 +8,7 @@
 
     </mat-card-header>
     <mat-card-content>
-        <form class="example-form" (ngSubmit)="create()" enctype="multipart/form-data" ngNativeValidate>
+        <form class="example-form add" (ngSubmit)="create()" enctype="multipart/form-data" ngNativeValidate>
             <input type="hidden" name="request" value="Articles.add">
             <div class="row">
                 <div class="col-sm-8 col-10">
@@ -20,17 +20,16 @@
                     <br>
                     <br>
                     <mat-form-field class="example-full-width">
-                        <textarea matInput [(ngModel)]="contenu" name="contenu" placeholder="content" autofocus required></textarea>
+                        <textarea matInput [(ngModel)]="contenu" name="content" placeholder="content" autofocus required></textarea>
                     </mat-form-field>
                     <br>
                     <br>
                     <mat-form-field class="example-full-width">
-                        <mat-select placeholder="Category" [(ngModel)]="categorie" name="categorie">
-                            <mat-option *ngFor="let categorie of categories" value="categorie.id">{{categorie.titre}}</mat-option>
+                        <mat-select placeholder="Category" [(ngModel)]="category" name="category" required>
+                            <mat-option *ngFor="let cat of categories" [value]="cat.id">{{cat.titre}}</mat-option>
                         </mat-select>
                     </mat-form-field>
                     <br>
-
                     <div class="text-right">
                         <button mat-mini-fab class="success" type="submit">
                           <i class="fa fa-check" aria-hidden="true"></i>
@@ -39,12 +38,11 @@
                 </div>
 
                 <div class="col-sm-4 col-2">
-                    <mat-form-field>
-                        <br>
-                        <label class="custom-file">
-              <input matInput type="file" ng-model="files"  name="images" class="btn btn-primary" multiple>
-              </label>
-                    </mat-form-field>
+                    <button mat-mini-fab class="info" type="button" (click)="selectFile()">
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i>
+                    </button>
+                    <input (change)="FileSelect($event)" #inputFile [(ngModel)]="file" type="file" name="images" style="display: none" multiple>
+                    <span class="badge badge-warning">{{length}}</span>
                 </div>
 
             </div>

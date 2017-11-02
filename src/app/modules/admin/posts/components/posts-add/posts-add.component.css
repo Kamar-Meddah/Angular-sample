@@ -12,6 +12,10 @@
     background-color: green;
 }
 
+.info {
+    background-color: #304FFE;
+}
+
 .PT {
     background-color: var(--primary);
 }
