@@ -10,7 +10,6 @@ import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { MatInputModule, MatButtonModule, MatCardModule, MatSelectModule} from '@angular/material';
 import {ConfirmationPopoverModule} from 'angular-confirmation-popover';
 
-
 //   ------------- Services -------------
 import { AuthGuard } from './../../../services/auth.guard';
 import { PostsService } from './../../../services/posts.service';

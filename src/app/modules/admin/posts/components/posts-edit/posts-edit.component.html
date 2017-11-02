@@ -1,3 +1,65 @@
-<p>
-  posts-edit works!
-</p>
+<mat-card>
+    <a mat-mini-fab aria-hidden="true" routerLink="/admin/edit/posts/home/1" class="PT"><i class="fa fa-backward" aria-hidden="true"></i>
+  <br><br></a>
+    <mat-card-header>
+        <mat-card-title class="cat">
+            <h1 class="form-signin-heading">Edit Post</h1>
+        </mat-card-title>
+
+    </mat-card-header>
+    <mat-card-content>
+        <form class="example-form add" (ngSubmit)="update()" enctype="multipart/form-data" ngNativeValidate>
+            <input type="hidden" name="request" value="Articles.edit">
+            <input type="hidden" name="id" [value]="id">
+
+            <div class="row">
+                <div class="col-sm-8 col-10">
+                    <br>
+                    <br>
+                    <mat-form-field class="example-full-width">
+                        <input matInput type="text" [(ngModel)]="titre" name="titre" placeholder="Title" autofocus required>
+                    </mat-form-field>
+                    <br>
+                    <br>
+                    <mat-form-field class="example-full-width">
+                        <textarea matInput [(ngModel)]="contenu" name="content" placeholder="content" autofocus required></textarea>
+                    </mat-form-field>
+                    <br>
+                    <br>
+                    <mat-form-field class="example-full-width">
+                        <mat-select placeholder="Category" [(ngModel)]="category" name="category" required>
+                            <mat-option *ngFor="let cat of categories" [value]="cat.id">{{cat.titre}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <br>
+                    <div class="text-right">
+                        <button mat-mini-fab class="success" type="submit">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                </div>
+
+                <div class="col-sm-4 col-2">
+                    <button mat-mini-fab class="info" type="button" (click)="selectFile()">
+                      <i class="fa fa-cloud-upload" aria-hidden="true"></i>
+                  </button>
+                    <input (change)="FileSelect($event)" #inputFile [(ngModel)]="file" type="file" name="images" style="display: none" multiple>
+                    <span class="badge badge-warning">{{length}}</span>
+                    <br><br>
+                    <ul>
+                        <li class="list-unstyled" *ngFor="let image of images; let i=index" [attr.data-index]='i'>
+                            <a style="background-color: white;box-shadow: 0px 0px 0px 0px;border: 0px;" mwlConfirmationPopover [title]="title" [message]="message" (confirm)="deleteImg(image.id,i)">
+                                <i class="fa fa-times t" aria-hidden="true"></i>
+                            </a>
+                            <br>
+                            <a href="http://localhost/img/articles/{{image.name}}" data-lightbox="roadtrip"> <img src="http://localhost/img/articles/{{image.name}}" class="img-fluid img-thumbnail" alt="Images" width="280px"></a>
+                            <hr>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </form>
+    </mat-card-content>
+</mat-card>
