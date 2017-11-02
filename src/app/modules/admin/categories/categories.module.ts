@@ -30,7 +30,6 @@ const ROUTES: Routes = [
         {path: 'add', component: CategoriesAddComponent},
         {path: 'home/:page', component: CategoriesHomeComponent},
         {path: ':title/:id', component: CategoriesEditComponent}
-
       ]
      }
      ]

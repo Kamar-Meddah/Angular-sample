@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { MatInputModule, MatButtonModule, MatCardModule } from '@angular/material';
 import { CategoriesModule } from './categories/categories.module';
+import { PostsModule } from './posts/posts.module';
 
 //   ------------- Services -------------
 import { CookieService } from 'ngx-cookie-service';
@@ -52,7 +53,8 @@ const ROUTES: Routes = [
     MatButtonModule,
     MatCardModule,
     SnotifyModule,
-    CategoriesModule
+    CategoriesModule,
+    PostsModule
   ],
   declarations: [
                  HomeComponent,
