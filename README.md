@@ -1,6 +1,13 @@
 # BlogV4
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.8.
+Run `npm install` to install all the dependencies
+
+## backend server (express)
+
+navigate to the server folder and run `npm install` to install the server dependecies
+Run `npm start` for a backend server (express)
+PS: you will always need this backend server for both dev and prod
 
 ## Development server
 
