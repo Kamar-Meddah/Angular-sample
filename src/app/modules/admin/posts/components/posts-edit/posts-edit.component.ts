@@ -27,7 +27,7 @@ export class PostsEditComponent implements OnInit {
   public length: number;
   public file: any;
   private notifyConfig: Object;
-  private id: number;
+  public id: number;
   @Output() onFileSelect: EventEmitter<File[]> = new EventEmitter();
   public title = 'Delete confirm';
   public message = 'delete selected Element ?';

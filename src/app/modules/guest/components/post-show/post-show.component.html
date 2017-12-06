@@ -76,7 +76,7 @@
                     <div class="col-sm-10 col-10 ">
                         <p> {{comment.content}} </p>
                     </div>
-                    <button *ngIf="logged" style="background-color: white;box-shadow: 0px 0px 0px 0px;border: 0px;" mwlConfirmationPopover [title]="title" [message]="message" (confirm)="delete(comment.id,i)">
+                    <button *ngIf="isAdmin" style="background-color: white;box-shadow: 0px 0px 0px 0px;border: 0px;" mwlConfirmationPopover [title]="title" [message]="message" (confirm)="delete(comment.id,i)">
                         <i ng-show="dat" class="fa fa-times t" aria-hidden="true "></i>
                         </button>
 

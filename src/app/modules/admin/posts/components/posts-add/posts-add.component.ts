@@ -58,7 +58,6 @@ export class PostsAddComponent implements OnInit {
   public create (): void {
 
     if (this.category) {
-      console.log(this.category)
       const formElement = new FormData(document.querySelectorAll('form')[1]);
       formElement.append('category', this.category);
       this.Posts.insert(formElement).then((data) => {
@@ -83,7 +82,7 @@ export class PostsAddComponent implements OnInit {
 
     this.files = $event.srcElement.files;
     this.length = this.files.length;
-  
+
   }
 
   selectFile() {

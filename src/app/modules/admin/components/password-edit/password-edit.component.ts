@@ -35,14 +35,14 @@ export class PasswordEditComponent implements OnInit {
   }
 
   public changePassword (): void {
-    const id = parseInt(this.cookies.get('id'), 10);
+    const id = JSON.parse(localStorage.getItem('user')).id;
     this.Users.checkPass(id, this.oldPassword).then((data) => {
       if (data) {
           this.Users.changePass(id, this.newPassword);
           this.notify.success('Password successfully changed', this.notifyConfig);
           this.newPassword = '';
           this.oldPassword = '';
-      }else {
+      } else {
         this.notify.error('Wrong password', this.notifyConfig);
       }
     });

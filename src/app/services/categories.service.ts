@@ -1,15 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ConfigService } from './config/config.service';
+
 
 @Injectable()
 export class CategoriesService {
 
-  constructor(private http: HttpClient) { }
+  private server: string;
+
+  constructor(private http: HttpClient, private config: ConfigService) {
+    this.server = this.config.getConfig();
+   }
 
   public getAll(): Promise<any> {
 
     return new Promise((resolve, reject) => {
-      this.http.post('http://localhost/', { request: 'Categories.all' })
+      this.http.post(this.server, { request: 'Categories.all' })
       .subscribe((data) => {
         resolve(data);
       }, (err) => {
@@ -22,7 +28,7 @@ export class CategoriesService {
   public getAllPage (page: Number): Promise<any> {
 
     return new Promise ((resolve, reject) => {
-      this.http.post('http://localhost/', { request: 'Categories.index', page: page })
+      this.http.post(this.server, { request: 'Categories.index', page: page })
       .subscribe((data: Object) => {
         resolve(data);
       }, (err) => {
@@ -35,7 +41,7 @@ export class CategoriesService {
   public delete(id: Number): Promise<any> {
 
     return new Promise((resolve, reject) => {
-      this.http.post('http://localhost/', { request: 'Categories.delete', id: id })
+      this.http.post(this.server, { request: 'Categories.delete', id: id })
       .subscribe((data) => {
         resolve(data);
       }, (err) => {
@@ -48,7 +54,7 @@ export class CategoriesService {
   public insert (titre: String): Promise<any> {
 
     return new Promise ((resolve, reject) => {
-      this.http.post('http://localhost/', { request: 'Categories.add', title: titre })
+      this.http.post(this.server, { request: 'Categories.add', title: titre })
       .subscribe((data) => {
         resolve(data);
       }, (err) => {
@@ -61,7 +67,7 @@ export class CategoriesService {
   public edit (titre: String, id: Number): Promise<any> {
 
     return new Promise ((resolve, reject) => {
-      this.http.post('http://localhost/', { request: 'Categories.edit', title: titre, id: id})
+      this.http.post(this.server, { request: 'Categories.edit', title: titre, id: id})
       .subscribe((data) => {
         resolve(data);
       }, (err) => {

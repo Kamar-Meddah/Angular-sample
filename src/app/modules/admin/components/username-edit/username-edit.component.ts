@@ -35,14 +35,14 @@ export class UsernameEditComponent implements OnInit {
   }
 
   public changeUsername (): void {
-    const id = parseInt(this.cookies.get('id'), 10);
+    const id = JSON.parse(localStorage.getItem('user')).id;
     this.Users.checkPass(id, this.oldPassword).then((data) => {
       if (data) {
           this.Users.changeUsername(id, this.newUsername);
           this.notify.success('Username successfully changed', this.notifyConfig);
           this.newUsername = '';
           this.oldPassword = '';
-      }else {
+      } else {
         this.notify.error('Wrong password', this.notifyConfig);
       }
     });

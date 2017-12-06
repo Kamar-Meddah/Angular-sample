@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { UsersService } from './../../services/users.service';
 import { Router } from '@angular/router';
 import { SnotifyService } from 'ng-snotify';
+import { isNull } from 'util';
 
 
 @Component({
@@ -12,6 +13,7 @@ import { SnotifyService } from 'ng-snotify';
 export class NavBarComponent implements OnInit {
 
   public navBar: Boolean;
+  public isAdmin: Boolean;
   public input: String;
   private notifyConfig: Object;
 
@@ -27,7 +29,10 @@ export class NavBarComponent implements OnInit {
   ngOnInit() {
     this.switchNavBar();
     this.users.getEmitedValue().subscribe((data) => {
-      this.navBar = data;
+      this.navBar = !isNull(data);
+    });
+    this.users.getIsAdmin().subscribe((data) => {
+      this.isAdmin = data;
     });
 
   }
@@ -35,6 +40,7 @@ export class NavBarComponent implements OnInit {
   public switchNavBar (): void {
 
     this.navBar = this.users.isLogged();
+    this.isAdmin = this.users.isAdmin();
 
   }
 

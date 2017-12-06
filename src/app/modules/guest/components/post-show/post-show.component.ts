@@ -30,6 +30,7 @@ export class PostShowComponent implements OnInit {
   public name: String;
   public comment: String;
   public logged: Boolean;
+  public isAdmin: Boolean;
   public order: String;
 
   private notifyConfig: Object;
@@ -55,6 +56,7 @@ export class PostShowComponent implements OnInit {
               this.images = [];
               this.comments = [];
               this.logged = this.Users.isLogged();
+              this.isAdmin = this.Users.isAdmin();
               this.notifyConfig = {
                 timeout: 5000,
                 showProgressBar: false,

@@ -43,12 +43,13 @@ export class LoginComponent implements OnInit {
 
     this.Users.login(this.username, this.password).then((data) => {
       if (data.bool === true) {
-        this.cookie.set('id', data.id);
+        localStorage.setItem('user', JSON.stringify({id: data.id, admin: data.admin}));
+        localStorage.setItem('token', data.token);
         this.notify.success('Welcome to the administration', this.notifyConfig);
         this.Users.change();
         this.route.navigate([`/admin/home`]);
 
-      }else {
+      } else {
         this.notify.error('Wrong username or password', this.notifyConfig);
       }
     });
@@ -58,8 +59,15 @@ export class LoginComponent implements OnInit {
   private isLogged (): void {
 
         if (this.Users.isLogged()) {
+
+          this.notify.warning('already logged', this.notifyConfig);
+          this.route.navigate([`/`]);
+
+        } else if (this.Users.isAdmin()) {
+
           this.notify.warning('already logged', this.notifyConfig);
           this.route.navigate([`/admin/home`]);
+
         }
 
   }
