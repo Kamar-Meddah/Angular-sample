@@ -77,7 +77,7 @@ export class UsersService {
   }
 
   public change (): any {
-    this.logged.emit(true);
+    this.logged.emit(this.isLogged ());
   }
 
 }

@@ -1,3 +1,5 @@
+
+
 .navbar-toggler {
     z-index: 1;
 }
@@ -29,7 +31,7 @@
 .navbar {
     height: 3.2em;
     box-shadow: 2px 3px 3px 2px grey;
-    background-color: var(--primary)
+    background-color: #2C3E50
 }
 
 #search {
@@ -47,7 +49,7 @@
 
 #search:hover,
 #search:focus {
-    width: calc(var(--width) * 1px);
+    width: calc( 300 * 1px);
     transition: width 0.5s;
 }
 

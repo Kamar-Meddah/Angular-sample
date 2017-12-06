@@ -47,7 +47,7 @@ export class NavBarComponent implements OnInit {
   public logout () {
     this.users.logout();
     this.notify.success('you are disconnected', this.notifyConfig);
-    this.navBar = false;
+    this.users.change();
     this.route.navigate([`/`]);
   }
 
