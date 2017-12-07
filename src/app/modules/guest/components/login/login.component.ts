@@ -14,7 +14,7 @@ import { NavBarComponent } from './../../../../components/nav-bar/nav-bar.compon
 })
 export class LoginComponent implements OnInit {
 
-  public username: String;
+  public email: String;
   public password: String;
   //  -------
   private notifyConfig: Object;
@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
 
   public login (): void {
 
-    this.Users.login(this.username, this.password).then((data) => {
+    this.Users.login(this.email, this.password).then((data) => {
       if (data.bool === true) {
         localStorage.setItem('user', JSON.stringify({id: data.id, admin: data.admin}));
         localStorage.setItem('token', data.token);
@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
         this.route.navigate([`/admin/home`]);
 
       } else {
-        this.notify.error('Wrong username or password', this.notifyConfig);
+        this.notify.error('Wrong email or password', this.notifyConfig);
       }
     });
 

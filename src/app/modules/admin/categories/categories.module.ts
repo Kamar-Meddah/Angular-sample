@@ -11,7 +11,7 @@ import { MatInputModule, MatButtonModule, MatCardModule } from '@angular/materia
 import {ConfirmationPopoverModule} from 'angular-confirmation-popover';
 
 //   ------------- Services -------------
-import { AuthGuard } from './../../../services/auth.guard';
+import { AuthGuard } from './../../../guards/auth.guard';
 import { CategoriesService } from './../../../services/categories.service';
 
 //   ------------- Components -------------

@@ -40,10 +40,10 @@ export class UsersService {
 
   }
 
-  public login (username: String, passsword: String): Promise<any> {
+  public login (email: String, passsword: String): Promise<any> {
 
     return new Promise ((resolve, reject) => {
-      this.http.post(this.server, { request: 'Users.login', username: username, password: passsword })
+      this.http.post(this.server, { request: 'Users.login', email: email, password: passsword })
       .subscribe((data) => {
         resolve (data);
       }, (err) => {

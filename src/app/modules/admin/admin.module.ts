@@ -14,7 +14,7 @@ import { PostsModule } from './posts/posts.module';
 //   ------------- Services -------------
 import { CookieService } from 'ngx-cookie-service';
 import { UsersService } from './../../services/users.service';
-import { AuthGuard } from './../../services/auth.guard';
+import { AuthGuard } from './../../guards/auth.guard';
 
 //   ------------- Components -------------
 import { HomeComponent } from './components/home/home.component';

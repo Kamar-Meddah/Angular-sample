@@ -16,7 +16,6 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 
 //  --------------- Services -------------------
 import { UsersService } from './services/users.service';
-import { CookieService } from 'ngx-cookie-service';
 import { ConfigService } from './services/config/config.service';
 
 //  -----------------
@@ -46,7 +45,6 @@ const ROUTES: Routes = [
     UsersService,
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
     SnotifyService,
-    CookieService,
     ConfigService
   ],
   bootstrap: [AppComponent]
