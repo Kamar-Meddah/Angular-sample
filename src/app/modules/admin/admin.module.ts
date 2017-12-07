@@ -58,7 +58,7 @@ const ROUTES: Routes = [
     PostsModule
   ],
   declarations: [
-                 HomeComponent,
+                HomeComponent,
                 UsernameEditComponent,
                 PasswordEditComponent
                 ],
