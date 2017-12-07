@@ -4,11 +4,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 This project is made using NodeJs & ExpressJs & Angular4 & SQL databases (Postgres in this exemple)
 Run `npm install` to install all the dependencies
 
-## Backend server (express)
 
-navigate to the server folder and run `npm install` to install the server dependecies. 
-Run `npm start` for a backend server (express). 
-PS: you will always need this backend server for both dev and prod.
+# Note
+that is the client side for blog-v4 app
+if you're looking for the server side part here it is https://github.com/Kamar-Meddah/blog-v4-server-side
 
 ## Development server
 
