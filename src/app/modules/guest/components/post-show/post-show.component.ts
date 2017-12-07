@@ -137,9 +137,9 @@ export class PostShowComponent implements OnInit {
 
   public commenter (): void {
 
-    this.Comments.commenter(this.postId, this.name, this.comment).then((data) => {
+    this.Comments.commenter(this.postId, JSON.parse(localStorage.getItem('user')).username, this.comment).then((data) => {
       this.notify.success('Comment Successfully posted', this.notifyConfig);
-      this.comments.push({'id': data.id, 'name': this.name, 'content': this.comment, 'date': Date.now() });
+      this.comments.push({'id': data.id, 'name':JSON.parse(localStorage.getItem('user')).username, 'content': this.comment, 'date': Date.now() });
       this.name = '';
       this.comment = '';
     }, (err) => {

@@ -29,7 +29,7 @@ export class NavBarComponent implements OnInit {
   ngOnInit() {
     this.switchNavBar();
     this.users.getEmitedValue().subscribe((data) => {
-      this.navBar = !isNull(data);
+      this.navBar = data;
     });
     this.users.getIsAdmin().subscribe((data) => {
       this.isAdmin = data;

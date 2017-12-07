@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-  private admin: any = false;
+  private admin: boolean;
 
   constructor (private Users: UsersService, private route: Router) {
   }

@@ -15,6 +15,7 @@ import { PostsModule } from './posts/posts.module';
 import { CookieService } from 'ngx-cookie-service';
 import { UsersService } from './../../services/users.service';
 import { AuthGuard } from './../../guards/auth.guard';
+import { UserGuard } from './../../guards/user.guard';
 
 //   ------------- Components -------------
 import { HomeComponent } from './components/home/home.component';
@@ -23,9 +24,9 @@ import { PasswordEditComponent } from './components/password-edit/password-edit.
 
 //   ------------- Routes ------------
 const ROUTES: Routes = [
-  {path: 'admin', canActivate: [AuthGuard],
+  {path: 'admin', canActivate: [UserGuard],
   children: [
-    {path: 'home', component: HomeComponent },
+    {path: 'home', component: HomeComponent},
     {path: 'edit',
      children: [
        {path: 'username', component: UsernameEditComponent},
@@ -63,6 +64,7 @@ const ROUTES: Routes = [
                 ],
   providers: [
     AuthGuard,
+    UserGuard,
     UsersService,
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
     SnotifyService,

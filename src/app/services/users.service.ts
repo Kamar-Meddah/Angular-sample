@@ -15,15 +15,15 @@ export class UsersService {
     this.server = this.config.getConfig();
    }
 
-  public isLogged (): Boolean {
+  public isLogged (): boolean {
 
-    return JSON.parse(localStorage.getItem('user')) && localStorage.getItem('token') != null;
+    return localStorage.getItem('user') != null;
 
   }
 
-  public isAdmin(): Boolean {
+  public isAdmin(): boolean {
 
-        return this.isLogged() && JSON.parse(localStorage.getItem('user')).admin;
+        return this.isLogged() && JSON.parse(localStorage.getItem('user')).admin != null;
 
   }
 
@@ -56,7 +56,6 @@ export class UsersService {
   public logout (): void {
 
       localStorage.removeItem('user');
-      localStorage.removeItem('token');
 
   }
 

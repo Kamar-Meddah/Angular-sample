@@ -30,14 +30,11 @@
         </div>
     </div>
 
-    <div class="row">
+    <div *ngIf="logged" class="row">
         <div class="col-sm-6 col-6">
             <form class="example-form" (ngSubmit)="commenter()" ngNativeValidate>
                 <h3><i class="fa fa-commenting" aria-hidden="true"></i> <em>Poster Vos Commentaires</em></h3>
-                <br>
-                <mat-form-field class="example-full-width">
-                    <input matInput type="text" [(ngModel)]="name" name="name" placeholder="Enter Ur Name" required>
-                </mat-form-field>
+
                 <br>
                 <mat-form-field class="example-full-width">
                     <textarea matInput [(ngModel)]="comment" name="comment" placeholder="Enter Ur comment" rows="7" required></textarea>
@@ -83,7 +80,7 @@
                 </div>
                 <hr>
             </div>
-
+            <div *ngIf="!logged"><p><i> to post a comments you need to be <a routerLink="/login">logged</a></i></p></div>            
         </div>
     </div>
 </div>

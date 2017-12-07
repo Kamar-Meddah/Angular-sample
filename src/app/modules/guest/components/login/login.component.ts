@@ -43,8 +43,7 @@ export class LoginComponent implements OnInit {
 
     this.Users.login(this.email, this.password).then((data) => {
       if (data.bool === true) {
-        localStorage.setItem('user', JSON.stringify({id: data.id, admin: data.admin}));
-        localStorage.setItem('token', data.token);
+        localStorage.setItem('user', JSON.stringify(data));
         this.notify.success('Welcome to the administration', this.notifyConfig);
         this.Users.change();
         this.route.navigate([`/admin/home`]);
