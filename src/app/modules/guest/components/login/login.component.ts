@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { UsersService } from './../../../../services/users.service';
 import { Router } from '@angular/router';
 import { SnotifyService } from 'ng-snotify';
-import { CookieService } from 'ngx-cookie-service';
 import { Title } from '@angular/platform-browser';
 import { NavBarComponent } from './../../../../components/nav-bar/nav-bar.component';
 
@@ -23,7 +22,6 @@ export class LoginComponent implements OnInit {
              private Users: UsersService,
              private route: Router,
              private notify: SnotifyService,
-             private cookie: CookieService,
              private titleService: Title
             ) {
               this.notifyConfig = {
@@ -43,6 +41,7 @@ export class LoginComponent implements OnInit {
 
     this.Users.login(this.email, this.password).then((data) => {
       if (data.bool === true) {
+
         localStorage.setItem('user', JSON.stringify(data));
         this.notify.success('Welcome to the administration', this.notifyConfig);
         this.Users.change();

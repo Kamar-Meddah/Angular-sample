@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from './../../../../services/users.service';
 import { SnotifyService } from 'ng-snotify';
-import { CookieService } from 'ngx-cookie-service';
 import { Title } from '@angular/platform-browser';
 
 @Component({
@@ -19,7 +18,6 @@ export class UsernameEditComponent implements OnInit {
   constructor(
               private Users: UsersService,
               private notify: SnotifyService,
-              private cookies: CookieService,
               private titleService: Title
             ) {
                this.notifyConfig = {

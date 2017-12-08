@@ -10,7 +10,6 @@ import {MatInputModule, MatButtonModule, MatCardModule, MatSelectModule} from '@
 import { OrderModule } from 'ngx-order-pipe';
 import {ConfirmationPopoverModule} from 'angular-confirmation-popover';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
-import { CookieService } from 'ngx-cookie-service';
 
 //   ------------- Services -------------
 import { CategoriesService } from './../../services/categories.service';
@@ -76,8 +75,7 @@ const ROUTES: Routes = [
     UsersService,
     CommentsService,
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
-    SnotifyService,
-    CookieService
+    SnotifyService
   ],
   exports: [
     RouterModule

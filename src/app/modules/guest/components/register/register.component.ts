@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { UsersService } from './../../../../services/users.service';
 import { Router } from '@angular/router';
 import { SnotifyService } from 'ng-snotify';
-import { CookieService } from 'ngx-cookie-service';
 import { Title } from '@angular/platform-browser';
 import { NavBarComponent } from './../../../../components/nav-bar/nav-bar.component';
 
@@ -25,7 +24,6 @@ export class RegisterComponent implements OnInit {
              private Users: UsersService,
              private route: Router,
              private notify: SnotifyService,
-             private cookie: CookieService,
              private titleService: Title
             ) {
               this.notifyConfig = {
@@ -55,7 +53,7 @@ export class RegisterComponent implements OnInit {
           this.notify.success('Account succesfully created', this.notifyConfig);
           this.route.navigate([`/login`]);
         }
-        
+
       });
     }
 

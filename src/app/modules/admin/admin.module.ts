@@ -12,7 +12,6 @@ import { CategoriesModule } from './categories/categories.module';
 import { PostsModule } from './posts/posts.module';
 
 //   ------------- Services -------------
-import { CookieService } from 'ngx-cookie-service';
 import { UsersService } from './../../services/users.service';
 import { AuthGuard } from './../../guards/auth.guard';
 import { UserGuard } from './../../guards/user.guard';
@@ -67,8 +66,7 @@ const ROUTES: Routes = [
     UserGuard,
     UsersService,
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
-    SnotifyService,
-    CookieService
+    SnotifyService
   ],
   exports: [
     RouterModule

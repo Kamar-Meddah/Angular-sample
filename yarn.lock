@@ -314,6 +314,10 @@ angular-confirmation-popover@^3.4.1:
   dependencies:
     positioning "^1.3.1"
 
+angular2-jwt@^0.2.3:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/angular2-jwt/-/angular2-jwt-0.2.3.tgz#54efdda3ceedba85f6a37b165f22ac22b8adf021"
+
 ansi-html@0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/ansi-html/-/ansi-html-0.0.7.tgz#813584021962a9e9e6fd039f940d12f56ca7859e"
@@ -3657,10 +3661,6 @@ negotiator@0.6.1:
 ng-snotify@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/ng-snotify/-/ng-snotify-4.1.0.tgz#b706b08e2128fe73b91b244c736f4513ae9094ee"
-
-ngx-cookie-service@^1.0.9:
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/ngx-cookie-service/-/ngx-cookie-service-1.0.9.tgz#b88ef198299c93d363608545036dd38ed767b0ec"
 
 ngx-order-pipe@^1.1.1:
   version "1.1.1"
