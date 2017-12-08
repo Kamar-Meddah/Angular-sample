@@ -32,6 +32,7 @@ export class PostShowComponent implements OnInit {
   public logged: Boolean;
   public isAdmin: Boolean;
   public order: String;
+  private username: String;
 
   private notifyConfig: Object;
   // ---
@@ -63,6 +64,10 @@ export class PostShowComponent implements OnInit {
                 closeOnClick: true,
                 pauseOnHover: true
               };
+
+              this.Users.getUserParams().then((data) => {
+                this.username = data.username;
+              });
              }
 
   ngOnInit() {
@@ -137,9 +142,9 @@ export class PostShowComponent implements OnInit {
 
   public commenter (): void {
 
-    this.Comments.commenter(this.postId, JSON.parse(localStorage.getItem('user')).username, this.comment).then((data) => {
+    this.Comments.commenter(this.postId, this.username, this.comment).then((data) => {
       this.notify.success('Comment Successfully posted', this.notifyConfig);
-      this.comments.push({'id': data.id, 'name':JSON.parse(localStorage.getItem('user')).username, 'content': this.comment, 'date': Date.now() });
+      this.comments.push({'id': data.id, 'name': this.username, 'content': this.comment, 'date': Date.now() });
       this.name = '';
       this.comment = '';
     }, (err) => {

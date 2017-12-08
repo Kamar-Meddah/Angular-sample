@@ -12,6 +12,7 @@ export class UsernameEditComponent implements OnInit {
 
   public oldPassword: String;
   public newUsername: String;
+  private id : number;
 
   private notifyConfig: Object;
 
@@ -26,6 +27,10 @@ export class UsernameEditComponent implements OnInit {
                  closeOnClick: true,
                  pauseOnHover: true
                };
+
+               this.Users.getUserParams().then((data) => {
+                this.id = data.sub;
+              });
               }
 
   ngOnInit() {
@@ -33,10 +38,9 @@ export class UsernameEditComponent implements OnInit {
   }
 
   public changeUsername (): void {
-    const id = JSON.parse(localStorage.getItem('user')).id;
-    this.Users.checkPass(id, this.oldPassword).then((data) => {
+    this.Users.checkPass(this.id, this.oldPassword).then((data) => {
       if (data) {
-          this.Users.changeUsername(id, this.newUsername);
+          this.Users.changeUsername(this.id, this.newUsername);
           this.notify.success('Username successfully changed', this.notifyConfig);
           this.newUsername = '';
           this.oldPassword = '';

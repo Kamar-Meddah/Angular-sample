@@ -15,7 +15,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.isAdmin = this.Users.isAdmin();
-    this.user = JSON.parse(localStorage.getItem('user')).username;
+    this.Users.getUserParams().then((data) => {
+      this.user = data.username;
+    });
   }
 
 }

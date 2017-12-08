@@ -12,6 +12,7 @@ export class PasswordEditComponent implements OnInit {
 
   public oldPassword: String;
   public newPassword: String;
+  private id: number;
 
   private notifyConfig: Object;
 
@@ -26,6 +27,9 @@ export class PasswordEditComponent implements OnInit {
                  closeOnClick: true,
                  pauseOnHover: true
                };
+               this.Users.getUserParams().then((data) => {
+                this.id = data.sub;
+              });
               }
 
   ngOnInit() {
@@ -33,10 +37,10 @@ export class PasswordEditComponent implements OnInit {
   }
 
   public changePassword (): void {
-    const id = JSON.parse(localStorage.getItem('user')).id;
-    this.Users.checkPass(id, this.oldPassword).then((data) => {
+
+    this.Users.checkPass(this.id, this.oldPassword).then((data) => {
       if (data) {
-          this.Users.changePass(id, this.newPassword);
+          this.Users.changePass(this.id, this.newPassword);
           this.notify.success('Password successfully changed', this.notifyConfig);
           this.newPassword = '';
           this.oldPassword = '';

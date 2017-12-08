@@ -5,7 +5,6 @@ import { SnotifyService } from 'ng-snotify';
 import { Title } from '@angular/platform-browser';
 import { NavBarComponent } from './../../../../components/nav-bar/nav-bar.component';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -42,7 +41,7 @@ export class LoginComponent implements OnInit {
     this.Users.login(this.email, this.password).then((data) => {
       if (data.bool === true) {
 
-        localStorage.setItem('user', JSON.stringify(data));
+        localStorage.setItem('user', JSON.stringify({'token': data.token}));
         this.notify.success('Welcome to the administration', this.notifyConfig);
         this.Users.change();
         this.route.navigate([`/admin/home`]);
