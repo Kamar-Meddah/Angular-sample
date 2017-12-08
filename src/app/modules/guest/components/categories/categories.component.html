@@ -1,14 +1,17 @@
-<mat-card>
-    <mat-card-header>
-        <div mat-card-avatar class="cat"><i class="fa fa-folder-open-o" aria-hidden="true"></i></div>
-        <mat-card-title class="cat">
-            <em> Categories</em>
+<mat-card >
+    <mat-card-content>
+        <mat-card-title >
+            
+            <h3 class="list-unstyled">
+                <i class="fa fa-folder-open-o" aria-hidden="true"></i>
+                <em><b>Categories</b></em>
+            </h3>
         </mat-card-title>
 
-    </mat-card-header>
-    <mat-card-content>
-        <li class="list-unstyled" *ngFor="let categorie of categories">
-            <a routerLink="/{{categorie.titre}}/{{categorie.id}}/1">{{categorie.titre}}</a>
-        </li>
+        <ul>
+           <li  *ngFor="let categorie of categories">
+              <a routerLink="/{{categorie.titre}}/{{categorie.id}}/1">{{categorie.titre}}</a>
+           </li>
+        </ul>
     </mat-card-content>
 </mat-card>
