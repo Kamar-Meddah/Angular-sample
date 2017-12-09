@@ -60,6 +60,7 @@ export class PostsAddComponent implements OnInit {
     if (this.category) {
       const formElement = new FormData(document.querySelectorAll('form')[1]);
       formElement.append('category', this.category);
+      formElement.append('request', 'Articles.add');
       this.Posts.insert(formElement).then((data) => {
         this.notify.success('Post successfully created', this.notifyConfig);
         this.route.navigate([`admin/edit/posts/${this.titre}/${data.id}`]);

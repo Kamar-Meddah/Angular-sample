@@ -6,7 +6,8 @@
       "resources": {
         "files": [
           "/favicon.ico",
-          "/index.html"
+          "/index.html",
+          "/manifest.json"
         ],
         "versionedFiles": [
           "/*.bundle.css",
@@ -16,11 +17,12 @@
       }
     }, {
       "name": "assets",
-      "installMode": "lazy",
+      "installMode": "prefetch",
       "updateMode": "prefetch",
       "resources": {
         "files": [
           "/assets/**",
+          "/assets/icons/**",
           "/*.eot",
           "/*.svg",
           "/*.woff2",
@@ -33,6 +35,19 @@
         {
             "name":"test",
             "urls":[
+                "http://localhost/img/articles/*.jpg",
+
+                "http://localhost/?request=Categories.all",
+                "http://localhost/?request=Categories.index&page",
+
+                "http://localhost/?request=Images.find&id",
+
+                "http://localhost/?request=Articles.index&page",
+                "http://localhost/?request=Articles.show&id",
+                "http://localhost/?request=Articles.byCategorie&category_id&page",
+                "http://localhost/?request=Articles.search&search&page",
+
+                "http://localhost/?request=Comments.find&id"
                 
             ],
             "cacheConfig":{

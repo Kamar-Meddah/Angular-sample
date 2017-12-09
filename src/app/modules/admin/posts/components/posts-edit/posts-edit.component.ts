@@ -79,10 +79,14 @@ export class PostsEditComponent implements OnInit {
 
       const formElement = new FormData(document.querySelectorAll('form')[1]);
       formElement.append('category', this.category);
+      formElement.append('request', 'Articles.edit');
+      formElement.append('id', `${this.id}`);
       this.Posts.edit(formElement).then((data) => {
+        if (data.length > 0) {
         data.forEach(img => {
           this.images.push({'id': img.id, 'name': `${img.id}.jpg`, 'articleId': this.id});
         });
+      }
         this.notify.success('Post successfully updated', this.notifyConfig);
         this.file = [];
         this.files = [];

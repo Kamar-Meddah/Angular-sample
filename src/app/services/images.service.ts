@@ -14,7 +14,7 @@ export class ImagesService {
   public find (id: Number): Promise<any> {
 
     return new Promise((resolve, reject) => {
-      this.http.post(this.server, { request: 'Images.find', id: id })
+      this.http.get(`${this.server}?request=Images.find&id=${id}`)
       .subscribe((data) => {
         resolve(data);
       }, (err) => {

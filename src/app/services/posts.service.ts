@@ -14,7 +14,7 @@ export class PostsService {
     public find(id: Number): Promise<any> {
 
       return new Promise((resolve, reject) => {
-        this.http.post(this.server, { request: 'Articles.show', id: id })
+        this.http.get(`${this.server}?request=Articles.show&id=${id}`)
         .subscribe((data) => {
           resolve(data);
         }, (err) => {
@@ -27,7 +27,7 @@ export class PostsService {
     public getAllPage (page: Number): Promise<any> {
 
       return new Promise ((resolve, reject) => {
-        this.http.post(this.server, { request: 'Articles.index', page: page })
+        this.http.get(`${this.server}?request=Articles.index&page=${page}`)
         .subscribe((data: Object) => {
           resolve(data);
         }, (err) => {
@@ -79,7 +79,7 @@ export class PostsService {
     public getAllFromCategorie (id: Number, page: Number): Promise<any> {
 
       return new Promise((resolve, reject) => {
-        this.http.post(this.server, { request: 'Articles.byCategorie', category_id: id, page: page })
+        this.http.get(`${this.server}?request=Articles.byCategorie&category_id=${id}&page=${page}`)
         .subscribe((data) => {
           resolve(data);
         }, (err) => {
@@ -92,7 +92,7 @@ export class PostsService {
   public search (request: String, page: Number) {
 
       return new Promise((resolve, reject) => {
-        this.http.post(this.server, { request: 'Articles.search', search: request, page: page })
+        this.http.get(`${this.server}?request=Articles.search&search=${request}&page=${page}`)
         .subscribe((data) => {
           resolve(data);
         }, (err) => {

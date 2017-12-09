@@ -15,7 +15,7 @@ export class CategoriesService {
   public getAll(): Promise<any> {
 
     return new Promise((resolve, reject) => {
-      this.http.post(this.server, { request: 'Categories.all' })
+      this.http.get(`${this.server}?request=Categories.all`)
       .subscribe((data) => {
         resolve(data);
       }, (err) => {
@@ -28,7 +28,7 @@ export class CategoriesService {
   public getAllPage (page: Number): Promise<any> {
 
     return new Promise ((resolve, reject) => {
-      this.http.post(this.server, { request: 'Categories.index', page: page })
+      this.http.get(`${this.server}?request=Categories.index&page=${page}`)
       .subscribe((data: Object) => {
         resolve(data);
       }, (err) => {
