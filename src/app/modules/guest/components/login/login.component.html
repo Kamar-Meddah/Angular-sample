@@ -1,7 +1,7 @@
 <mat-card>
     <mat-card-header>
         <mat-card-title class="cat">
-            <h1 class="form-signin-heading"> Please Login </h1>
+            <h1 class="form-signin-heading"> <i class="fa fa-sign-in" aria-hidden="true"></i> Please Login </h1>
         </mat-card-title>
 
     </mat-card-header>
@@ -10,14 +10,20 @@
             <div class="container col-sm-8">
                 <br>
                 <br>
-                <mat-form-field class="example-full-width">
-                    <input matInput type="email" [(ngModel)]="email" name="email" placeholder="email" autofocus required>
-                </mat-form-field>
+                <span class="input-group"><i class="fa fa-envelope" aria-hidden="true" style="font-size:2.5em"></i>                    
+                   <span class="spacer"> </span>
+                   <mat-form-field class="example-full-width">
+                           <input matInput type="email" [(ngModel)]="email" name="email" placeholder="email" autofocus required>
+                   </mat-form-field>
+                </span>
                 <br>
                 <br>
-                <mat-form-field class="example-full-width">
-                    <input matInput name="password" type="password" [(ngModel)]="password" placeholder="Password" required>
-                </mat-form-field>
+                <span class="input-group"><i class="fa fa-lock" aria-hidden="true" style="font-size:2.5em"></i>                    
+                   <span class="spacer"> </span>
+                   <mat-form-field class="example-full-width">
+                       <input matInput name="password" type="password" [(ngModel)]="password" placeholder="Password" required>
+                   </mat-form-field>
+                </span>
                 <br>
                 <br>
                 <div class="text-right">

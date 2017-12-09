@@ -37,7 +37,6 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.setTitle(`register`);
     this.isLogged();
-    console.log(this.password)
   }
 
   public register (): void {
