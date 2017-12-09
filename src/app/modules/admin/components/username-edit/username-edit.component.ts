@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UsersService } from './../../../../services/users.service';
 import { SnotifyService } from 'ng-snotify';
 import { Title } from '@angular/platform-browser';
+import * as jwtDecode from 'jwt-decode';
+
 
 @Component({
   selector: 'app-username-edit',
@@ -27,10 +29,7 @@ export class UsernameEditComponent implements OnInit {
                  closeOnClick: true,
                  pauseOnHover: true
                };
-
-               this.Users.getUserParams().then((data) => {
-                this.id = data.sub;
-              });
+                this.id = jwtDecode(localStorage.getItem('token')).sub;
               }
 
   ngOnInit() {

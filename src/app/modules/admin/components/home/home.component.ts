@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../../../../services/users.service';
+import * as jwtDecode from 'jwt-decode';
 
 @Component({
   selector: 'app-home',
@@ -15,9 +16,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.isAdmin = this.Users.isAdmin();
-    this.Users.getUserParams().then((data) => {
-      this.user = data.username;
-    });
+     // this.user = jwtDecode(localStorage.getItem('token')).username;
   }
 
 }

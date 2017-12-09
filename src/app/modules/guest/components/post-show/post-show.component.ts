@@ -9,8 +9,7 @@ import { Categorie } from './../../../../interfaces/categorie';
 import { Image } from './../../../../interfaces/image';
 import {SnotifyService} from 'ng-snotify';
 import { Title } from '@angular/platform-browser';
-
-
+import * as jwtDecode from 'jwt-decode';
 
 @Component({
   selector: 'app-post-show',
@@ -64,11 +63,10 @@ export class PostShowComponent implements OnInit {
                 closeOnClick: true,
                 pauseOnHover: true
               };
-
-              this.Users.getUserParams().then((data) => {
-                this.username = data.username;
-              });
-             }
+            if (this.logged){
+                this.username = jwtDecode(localStorage.getItem('token')).username;
+            }
+              }
 
   ngOnInit() {
 

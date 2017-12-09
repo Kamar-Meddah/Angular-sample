@@ -1,0 +1,18 @@
+{
+    "name": "blog_v4",
+    "short_name": "B4",
+    "description": "progressive web app",
+    "lang": "en",
+    "start_url": "/",
+    "display": "standalone",
+    "orientation": "portrait",
+    "theme_color": "#f48c5b",
+    "icons": [
+      {
+        "src": "/assets/icons/icon.ico",
+        "sizes": "512x512",
+        "type": "image/icon"
+      }
+    ],
+    "background_color": "#ffffff"
+  }

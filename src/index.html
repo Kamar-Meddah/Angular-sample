@@ -6,14 +6,33 @@
     <title>BlogV4</title>
     <base href="/">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="manifest" href="manifest.json">
+    
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="B4">
+    <meta name="apple-mobile-web-app-title" content="B4">
+    <meta name="theme-color" content="#f48c5b">
+    <meta name="msapplication-navbutton-color" content="#f48c5b">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="msapplication-starturl" content="/">
+    
+    <link rel="icon" type="image/icon" sizes="512x512" href="/assets/icons/icon.ico">
+    <link rel="apple-touch-icon" type="image/icon" sizes="512x512" href="/assets/icons/icon.ico">
+
 </head>
 
 <body>
     <div class="container">
         <app-root></app-root>
     </div>
+    <noscript>
+        <p>
+            this app needs javascript
+        </p>
+    </noscript>
 </body>
 
 </html>

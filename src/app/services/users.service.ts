@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ConfigService } from './config/config.service';
 import { Router } from '@angular/router';
 import { SnotifyService } from 'ng-snotify';
+import * as jwtDecode from 'jwt-decode';
 
 @Injectable()
 export class UsersService {
@@ -11,9 +12,7 @@ export class UsersService {
   logged: EventEmitter<any> = new EventEmitter();
   admin: EventEmitter<any> = new EventEmitter();
   private server: string;
-  private token: boolean;
-  private params: any;
-  private _admin: boolean;
+  public token: string;
   public notifyConfig: Object;
 
   constructor(
@@ -29,28 +28,20 @@ export class UsersService {
       closeOnClick: true,
       pauseOnHover: true
     };
-
     this.server = this.config.getConfig();
-    if (localStorage.getItem('user') != null) {
-    this.checkToken();
-    }
-    this.getUserParams().then((data) => {
-      this.params = data;
-      this._admin = data.admin;
-    });
-
+    this.token = localStorage.getItem('token');
   }
 
   public isLogged (): boolean {
-
-    return localStorage.getItem('user') != null;
-
+    return localStorage.getItem('token') != null;
   }
 
   public isAdmin(): boolean {
-
-        return this.isLogged() && this._admin != null;
-
+    if (this.isLogged) {
+      return this.isLogged() && jwtDecode(localStorage.getItem('token')).admin ;
+    } else {
+      return false;
+    }
   }
 
   public checkPass (id: Number, password: String): Promise<any> {
@@ -93,9 +84,7 @@ export class UsersService {
   }
 
   public logout (): void {
-
-      localStorage.removeItem('user');
-
+      localStorage.removeItem('token');
   }
 
   public changeUsername (id: Number, username: String): void {
@@ -136,7 +125,7 @@ export class UsersService {
 
   private checkToken (): void {
       this.http.post(this.server,
-        { request: 'Users.tokenCheck', 'token': JSON.parse(localStorage.getItem('user')).token})
+        { request: 'Users.tokenCheck', 'token': this.token})
         .subscribe((data: {bool: boolean}) => {
           if (!data.bool) {
             this.logout();
@@ -146,23 +135,4 @@ export class UsersService {
           }
         });
   }
-
-  public getUserParams (): Promise<any> {
-
-      return new Promise ((resolve, reject) => {
-        if(this.isLogged()){
-        this.http.post(this.server, { request: 'Users.getUserParams', 'token': JSON.parse(localStorage.getItem('user')).token})
-        .subscribe((data) => {
-          resolve (data);
-        }, (err) => {
-          reject (err);
-        });
-    } else {
-      resolve ({admin: null})
-    }
-  });
-
-  }
-
-
 }

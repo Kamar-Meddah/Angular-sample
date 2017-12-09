@@ -8,7 +8,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { AdminModule } from './modules/admin/admin.module';
-
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 //  ----------------- Components ---------------
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
@@ -31,6 +32,7 @@ const ROUTES: Routes = [
   ],
   imports: [
   BrowserModule,
+  ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
   AdminModule,
   PostsModule,
   RouterModule.forRoot(
