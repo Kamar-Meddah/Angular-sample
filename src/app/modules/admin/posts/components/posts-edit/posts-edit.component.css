@@ -19,3 +19,8 @@
 .PT {
     background-color: #2C3E50;
 }
+@media(max-width: 480px){
+    #images{
+       transform: translateX(-25px);
+    }
+}

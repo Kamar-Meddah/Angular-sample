@@ -10,7 +10,7 @@
     <mat-card-content>
         <form class="example-form add" (ngSubmit)="create()" enctype="multipart/form-data" ngNativeValidate>
             <div class="row">
-                <div class="col-sm-8 col-10">
+                <div class="col-sm-8 col-12">
                     <br>
                     <br>
                     <mat-form-field class="example-full-width">
@@ -19,7 +19,7 @@
                     <br>
                     <br>
                     <mat-form-field class="example-full-width">
-                        <textarea matInput [(ngModel)]="contenu" name="content" placeholder="content" autofocus required></textarea>
+                        <textarea matInput rows="20" [(ngModel)]="contenu" name="content" placeholder="content" autofocus required></textarea>
                     </mat-form-field>
                     <br>
                     <br>
@@ -29,6 +29,11 @@
                         </mat-select>
                     </mat-form-field>
                     <br>
+                    <button mat-mini-fab class="info" type="button" (click)="selectFile()">
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i>
+                    </button>
+                    <span class="badge badge-warning">{{length}}</span>
+                    <br>
                     <div class="text-right">
                         <button mat-mini-fab class="success" type="submit">
                           <i class="fa fa-check" aria-hidden="true"></i>
@@ -36,12 +41,8 @@
                     </div>
                 </div>
 
-                <div class="col-sm-4 col-2">
-                    <button mat-mini-fab class="info" type="button" (click)="selectFile()">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i>
-                    </button>
+                <div class="col-sm-4 col-12">
                     <input (change)="FileSelect($event)" #inputFile [(ngModel)]="file" type="file" name="images" style="display: none" multiple>
-                    <span class="badge badge-warning">{{length}}</span>
                 </div>
 
             </div>

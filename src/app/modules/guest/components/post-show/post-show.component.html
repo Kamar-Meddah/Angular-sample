@@ -5,7 +5,7 @@
     <h1><em>{{post.titre}}</em></h1>
     <br>
     <div class="row">
-        <div class="col-sm-8 col-8">
+        <div class="col-sm-8 col-12">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a routerLink="/"><i class="fa fa-home" aria-hidden="true"></i><em> Home</em></a></li>
                 <li class="breadcrumb-item"><a routerLink="/{{post.category.titre}}/{{post.category.id}}/1"><i class="fa fa-folder-open-o" aria-hidden="true"></i> <em>{{post.category.titre}}</em></a></li>
@@ -24,14 +24,14 @@
 
         </div>
 
-        <div class="col-sm-4 col-4">
+        <div id="show" class="col-sm-4 col-4">
             <br><br><br>
             <app-categories></app-categories>
         </div>
     </div>
 
     <div *ngIf="logged" class="row">
-        <div class="col-sm-6 col-6">
+        <div class="col-sm-6 col-12">
             <form class="example-form" (ngSubmit)="commenter()" ngNativeValidate>
                 <h3><i class="fa fa-commenting" aria-hidden="true"></i> <em>Poster Vos Commentaires</em></h3>
 
@@ -51,7 +51,7 @@
     <br>
     <br>
     <div class="row">
-        <div class="col-sm-6 col-6">
+        <div class="col-sm-6 col-12">
             <div>
                 <h3><i class="fa fa-comments" aria-hidden="true"></i> <em>Commentaires</em> :</h3>
                 <div class="text-right">

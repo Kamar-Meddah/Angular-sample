@@ -10,7 +10,7 @@
     <mat-card-content>
         <form class="example-form add" (ngSubmit)="update()" enctype="multipart/form-data" ngNativeValidate>
             <div class="row">
-                <div class="col-sm-8 col-10">
+                <div class="col-sm-8 col-12">
                     <br>
                     <br>
                     <mat-form-field class="example-full-width">
@@ -19,7 +19,7 @@
                     <br>
                     <br>
                     <mat-form-field class="example-full-width">
-                        <textarea matInput [(ngModel)]="contenu" name="content" placeholder="content" autofocus required></textarea>
+                        <textarea matInput [(ngModel)]="contenu" name="content" placeholder="content" autofocus required rows=20></textarea>
                     </mat-form-field>
                     <br>
                     <br>
@@ -29,27 +29,29 @@
                         </mat-select>
                     </mat-form-field>
                     <br>
+                    <button mat-mini-fab class="info" type="button" (click)="selectFile()">
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i>
+                    </button>
+                    <span class="badge badge-warning">{{length}}</span>
+                    <br>
                     <div class="text-right">
                         <button mat-mini-fab class="success" type="submit">
                         <i class="fa fa-check" aria-hidden="true"></i>
                       </button>
+                     
                     </div>
                 </div>
 
-                <div class="col-sm-4 col-2">
-                    <button mat-mini-fab class="info" type="button" (click)="selectFile()">
-                      <i class="fa fa-cloud-upload" aria-hidden="true"></i>
-                  </button>
+                <div class="col-sm-4 col-12">
                     <input (change)="FileSelect($event)" #inputFile [(ngModel)]="file" type="file" name="images" style="display: none" multiple>
-                    <span class="badge badge-warning">{{length}}</span>
                     <br><br>
-                    <ul>
+                    <ul id="images">
                         <li class="list-unstyled" *ngFor="let image of images; let i=index" [attr.data-index]='i'>
                             <a style="background-color: white;box-shadow: 0px 0px 0px 0px;border: 0px;" mwlConfirmationPopover [title]="title" [message]="message" (confirm)="deleteImg(image.id,i)">
                                 <i class="fa fa-times t" aria-hidden="true"></i>
                             </a>
                             <br>
-                            <a href="http://localhost/img/articles/{{image.name}}" data-lightbox="roadtrip"> <img src="http://localhost/img/articles/{{image.name}}" class="img-fluid img-thumbnail" alt="Images" width="280px"></a>
+                            <a href="http://localhost/img/articles/{{image.name}}" data-lightbox="roadtrip"> <img src="http://localhost/img/articles/{{image.name}}" class="img-fluid img-thumbnail" alt="Images" ></a>
                             <hr>
                         </li>
                     </ul>

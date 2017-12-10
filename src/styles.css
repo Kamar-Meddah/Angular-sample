@@ -128,3 +128,8 @@ div>p>h1 {
     line-height: 1em;
     font-weight: 400;
 }
+@media(max-width: 480px){
+    #show{
+        display: none;
+    }
+}

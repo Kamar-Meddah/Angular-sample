@@ -2,40 +2,40 @@
 <br>
 <div class="row admin">
 
-    <div class="col-md-4 col-sm-6 col-12">
+    <div class="col-md-4 col-sm-4 col-6">
         <a routerLink="/">
-            <h1 style="font-size:12em"><i class="fa fa-home" aria-hidden="true"></i> </h1>
+            <h1 style="font-size:10em"><i class="fa fa-home" aria-hidden="true"></i> </h1>
             <h2>Page d'accueil</h2>
         </a>
     </div>
 
-    <div *ngIf="isAdmin" class="col-md-4 col-sm-6 col-12">
+    <div *ngIf="isAdmin" class="col-md-4 col-sm-4 col-6">
         <a routerLink="/admin/edit/categories/home/1">
-            <h1 style="font-size:12em"><i class="fa fa-folder-open" aria-hidden="true"></i></h1>
+            <h1 style="font-size:10em"><i class="fa fa-folder-open" aria-hidden="true"></i></h1>
             <h2>Edit Categories</h2>
         </a>
     </div>
 
-    <div *ngIf="isAdmin" class="col-md-4 col-sm-6 col-12">
+    <div *ngIf="isAdmin" class="col-md-4 col-sm-4 col-6">
         <a routerLink="/admin/edit/posts/home/1">
-            <h1 style="font-size:12em"><i class="fa fa-file-text" aria-hidden="true"></i></h1>
+            <h1 style="font-size:10em"><i class="fa fa-file-text" aria-hidden="true"></i></h1>
             <h2>Edit Articles</h2>
         </a>
     </div>
-    <div class="col-md-2"></div>
-    <div class="col-md-4 col-sm-6 col-12">
+
+    <div class="col-md-4 col-sm-4 col-6">
         <a routerLink="/admin/edit/username">
-            <h1 style="font-size:12em"><i class="fa fa-user-secret" aria-hidden="true"></i></h1>
+            <h1 style="font-size:10em"><i class="fa fa-user-secret" aria-hidden="true"></i></h1>
             <h2>Change usernames</h2>
         </a>
     </div>
 
-    <div class="col-md-64 col-sm-6 col-12">
+    <div class="col-md-4 col-sm-4 col-6">
         <a routerLink="/admin/edit/password">
-            <h1 style="font-size:12em"><i class="fa fa-key" aria-hidden="true"></i></h1>
+            <h1 style="font-size:10em"><i class="fa fa-key" aria-hidden="true"></i></h1>
             <h2>Changer Mots de passe</h2>
         </a>
     </div>
-    <div class="col-md-2"></div>
+
 
 </div>
