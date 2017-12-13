@@ -133,3 +133,7 @@ div>p>h1 {
         display: none;
     }
 }
+
+.page-link{
+    color:black;
+}
