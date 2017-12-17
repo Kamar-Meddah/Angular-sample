@@ -2,7 +2,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
 import { TimeSinceModule } from '@thisissoon/angular-timesince';
 import { FormsModule } from '@angular/forms';
@@ -42,11 +41,10 @@ const ROUTES: Routes = [
   imports: [
   CommonModule,
   HttpClientModule,
-  RouterModule.forRoot(
+  RouterModule.forChild(
     ROUTES
   ),
   TimeSinceModule,
-  BrowserAnimationsModule,
   FormsModule,
   MatInputModule,
   MatButtonModule,

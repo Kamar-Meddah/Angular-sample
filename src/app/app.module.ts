@@ -21,6 +21,7 @@ import { ConfigService } from './services/config/config.service';
 
 //  -----------------
 const ROUTES: Routes = [
+  {path: 'admin', loadChildren: './modules/admin/admin.module#AdminModule' },
   {path: '**', component: NotFoundComponent}
 ];
 
@@ -33,7 +34,7 @@ const ROUTES: Routes = [
   imports: [
   BrowserModule,
   ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
-  AdminModule,
+
   PostsModule,
   RouterModule.forRoot(
   ROUTES
