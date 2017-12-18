@@ -21,7 +21,7 @@ import { PostsAddComponent } from './components/posts-add/posts-add.component';
 
 //   ------------- Routes ------------
 const ROUTES: Routes = [
-  {path: 'admin', canActivate: [AuthGuard],
+  {path: '', canActivate: [AuthGuard],
   children: [
     {path: 'edit',
      children: [

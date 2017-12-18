@@ -19,7 +19,7 @@ import { CategoriesAddComponent } from './components/categories-add/categories-a
 
 //   ------------- Routes ------------
 const ROUTES: Routes = [
-  {path: 'admin', canActivate: [AuthGuard],
+  {path: '', canActivate: [AuthGuard],
   children: [
     {path: 'edit',
      children: [
