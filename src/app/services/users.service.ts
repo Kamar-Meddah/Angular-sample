@@ -1,14 +1,13 @@
-import { Injectable, EventEmitter, Output} from '@angular/core';
+import { Injectable, EventEmitter} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ConfigService } from './config/config.service';
 import { Router } from '@angular/router';
 import { SnotifyService } from 'ng-snotify';
 import * as jwtDecode from 'jwt-decode';
+import Constants from '../config/Constants';
 
 @Injectable()
 export class UsersService {
 
-  @Output()
   logged: EventEmitter<any> = new EventEmitter();
   admin: EventEmitter<any> = new EventEmitter();
   private server: string;
@@ -17,7 +16,6 @@ export class UsersService {
 
   constructor(
     private http: HttpClient,
-    private config: ConfigService,
     private route: Router,
     private notify: SnotifyService
   ) {
@@ -28,7 +26,7 @@ export class UsersService {
       closeOnClick: true,
       pauseOnHover: true
     };
-    this.server = this.config.getConfig();
+    this.server = Constants.SERVER;
     this.token = localStorage.getItem('token');
   }
 
