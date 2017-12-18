@@ -1,10 +1,8 @@
 //   ------------- Modules -------------
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { MatInputModule, MatButtonModule, MatCardModule, MatSelectModule} from '@angular/material';
@@ -45,10 +43,9 @@ const ROUTES: Routes = [
   imports: [
     CommonModule,
     HttpClientModule,
-    RouterModule.forRoot(
+    RouterModule.forChild(
       ROUTES
     ),
-    BrowserAnimationsModule,
     FormsModule,
     MatInputModule,
     MatSelectModule,
