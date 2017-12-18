@@ -21,7 +21,7 @@ import { PasswordEditComponent } from './components/password-edit/password-edit.
 
 //   ------------- Routes ------------
 const ROUTES: Routes = [
-  {path: 'admin', canActivate: [UserGuard],
+  {path: '', canActivate: [UserGuard],
   children: [
     {path: 'home', component: HomeComponent},
     {path: 'edit',
