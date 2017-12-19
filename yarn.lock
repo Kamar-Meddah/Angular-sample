@@ -3679,13 +3679,13 @@ negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
-ng-snotify@^4.1.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/ng-snotify/-/ng-snotify-4.2.0.tgz#1af9fce5410ed20facd690e4dc53b91f2ed3b037"
-
 ngx-order-pipe@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/ngx-order-pipe/-/ngx-order-pipe-1.1.1.tgz#931ce42738e397f6bd04a76f5d32026e79c82d3a"
+
+ngx-toastr@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/ngx-toastr/-/ngx-toastr-8.0.0.tgz#f3bc53146b2f7da3eabf3daa1b1bbdf65cb49697"
 
 no-case@^2.2.0:
   version "2.3.2"

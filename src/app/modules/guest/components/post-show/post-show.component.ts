@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { CommentsService } from './../../../../services/comments.service';
-import { Post } from './../../../../interfaces/post';
-import { ImagesService } from './../../../../services/images.service';
-import { UsersService } from './../../../../services/users.service';
-import { PostsService } from './../../../../services/posts.service';
+import { CommentsService } from '../../../../services/comments.service';
+import { Post } from '../../../../interfaces/post';
+import { ImagesService } from '../../../../services/images.service';
+import { UsersService } from '../../../../services/users.service';
+import { PostsService } from '../../../../services/posts.service';
 import { ActivatedRoute } from '@angular/router';
-import { Categorie } from './../../../../interfaces/categorie';
-import { Image } from './../../../../interfaces/image';
-import {SnotifyService} from 'ng-snotify';
+import { Image } from '../../../../interfaces/image';
 import { Title } from '@angular/platform-browser';
 import * as jwtDecode from 'jwt-decode';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-post-show',
@@ -32,13 +31,10 @@ export class PostShowComponent implements OnInit {
   public isAdmin: Boolean;
   public order: String;
   private username: String;
-
-  private notifyConfig: Object;
   // ---
   public title = 'Delete confirm';
   public message = 'delete selected comment ?';
-  public confirmClicked = false;
-  public cancelClicked = false;
+
 
 
   constructor(
@@ -47,7 +43,7 @@ export class PostShowComponent implements OnInit {
               private Users: UsersService,
               private Posts: PostsService,
               private router: ActivatedRoute,
-              private notify: SnotifyService,
+              private notify: ToastrService,
               private titleService: Title
 
             ) {
@@ -57,16 +53,10 @@ export class PostShowComponent implements OnInit {
               this.comments = [];
               this.logged = this.Users.isLogged();
               this.isAdmin = this.Users.isAdmin();
-              this.notifyConfig = {
-                timeout: 5000,
-                showProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true
-              };
-            if (this.logged){
+              if (this.logged) {
                 this.username = jwtDecode(localStorage.getItem('token')).username;
-            }
               }
+            }
 
   ngOnInit() {
 
@@ -141,12 +131,13 @@ export class PostShowComponent implements OnInit {
   public commenter (): void {
 
     this.Comments.commenter(this.postId, this.username, this.comment).then((data) => {
-      this.notify.success('Comment Successfully posted', this.notifyConfig);
+      this.notify.success('Comment Successfully posted');
       this.comments.push({'id': data.id, 'name': this.username, 'content': this.comment, 'date': Date.now() });
       this.name = '';
       this.comment = '';
     }, (err) => {
-      console.log(err) ;
+      this.notify.error('the cnx with the server has been lost');
+      console.log(err.message) ;
     });
 
   }
@@ -154,18 +145,17 @@ export class PostShowComponent implements OnInit {
   public delete(id: Number, index: number) {
 
     this.Comments.delete(id).then((data) => {
-      this.notify.success('Comment Successfully deleted', this.notifyConfig);
+      this.notify.success('Comment Successfully deleted');
       this.comments.splice(index, 1);
     }, (err) => {
-      console.log(err);
+      this.notify.error('the cnx with the server has been lost');
+      console.log(err.message);
     });
 
   }
 
   private setTitle( newTitle: string): void {
-
     this.titleService.setTitle( newTitle );
-
   }
 
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { SnotifyService } from 'ng-snotify';
-import { CategoriesService } from './../../../../../services/categories.service';
+import { CategoriesService } from '../../../../../services/categories.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-categories-add',
@@ -11,20 +11,13 @@ import { CategoriesService } from './../../../../../services/categories.service'
 export class CategoriesAddComponent implements OnInit {
 
   public titre: String;
-  private notifyConfig: Object;
+
 
   constructor(
     private Service: CategoriesService,
     private titleService: Title,
-    private notify: SnotifyService
-  ) {
-     this.notifyConfig = {
-      timeout: 5000,
-      showProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true
-    };
-   }
+    private notify: ToastrService
+  ) {}
 
   ngOnInit() {
     this.setTitle('New categorie');
@@ -37,7 +30,7 @@ export class CategoriesAddComponent implements OnInit {
   public create (): void {
     this.Service.insert(this.titre).then ((data) => {
       this.titre = '';
-      this.notify.success('Categorie successfully created', this.notifyConfig);
+      this.notify.success('Categorie successfully created');
     });
   }
 

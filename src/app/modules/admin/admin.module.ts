@@ -4,14 +4,12 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { MatInputModule, MatButtonModule, MatCardModule } from '@angular/material';
 import { CategoriesModule } from './categories/categories.module';
 import { PostsModule } from './posts/posts.module';
 
 //   ------------- Services -------------
-import { UsersService } from './../../services/users.service';
-import { UserGuard } from './../../guards/user.guard';
+import { UsersService } from '../../services/users.service';
 
 //   ------------- Components -------------
 import { HomeComponent } from './components/home/home.component';
@@ -29,7 +27,7 @@ const ROUTES: Routes = [
           children: [
             {path: 'settings',
             children: [
-              {path: 'username', component: UsernameEditComponent,  pathMatch: 'full'},
+              {path: 'username', component: UsernameEditComponent},
               {path: 'password', component: PasswordEditComponent}
             ]}
           ]
@@ -43,17 +41,13 @@ const ROUTES: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(
-    ROUTES
-    ),
+    RouterModule.forChild(ROUTES),
     HttpClientModule,
     FormsModule,
-    SnotifyModule,
     FormsModule,
     MatInputModule,
     MatButtonModule,
     MatCardModule,
-    SnotifyModule,
     CategoriesModule,
     PostsModule
   ],
@@ -63,10 +57,7 @@ const ROUTES: Routes = [
                 PasswordEditComponent
                 ],
   providers: [
-    UserGuard,
     UsersService,
-    { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
-    SnotifyService
   ],
   exports: [
     RouterModule

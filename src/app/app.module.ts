@@ -5,10 +5,11 @@ import {HttpClientModule} from '@angular/common/http';
 import {RouterModule, Routes} from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
-import {SnotifyModule, SnotifyService, ToastDefaults} from 'ng-snotify';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
+
 import {PostsModule} from './modules/guest/posts.module';
+import { ToastrModule } from 'ngx-toastr';
 //  ----------------- Components ---------------
 import {AppComponent} from './app.component';
 import {NavBarComponent} from './components/nav-bar/nav-bar.component';
@@ -16,7 +17,7 @@ import {NavBarComponent} from './components/nav-bar/nav-bar.component';
 //  --------------- Services -------------------
 import {UsersService} from './services/users.service';
 import { UserGuard } from './guards/user.guard';
-import {NotFoundComponent} from "./components/not-found/not-found.component";
+import {NotFoundComponent} from './components/not-found/not-found.component';
 
 //  -----------------
 const ROUTES: Routes = [
@@ -38,12 +39,10 @@ const ROUTES: Routes = [
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
-    SnotifyModule
+    ToastrModule.forRoot({positionClass: 'toast-bottom-right', timeOut: 4000})
   ],
   providers: [
     UsersService,
-    {provide: 'SnotifyToastConfig', useValue: ToastDefaults},
-    SnotifyService,
     UserGuard
   ],
   bootstrap: [AppComponent]

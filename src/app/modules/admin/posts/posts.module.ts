@@ -4,14 +4,13 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { MatInputModule, MatButtonModule, MatCardModule, MatSelectModule} from '@angular/material';
 import {ConfirmationPopoverModule} from 'angular-confirmation-popover';
 
 //   ------------- Services -------------
-import { PostsService } from './../../../services/posts.service';
-import { ImagesService } from './../../../services/images.service';
-import { CategoriesService } from './../../../services/categories.service';
+import { PostsService } from '../../../services/posts.service';
+import { ImagesService } from '../../../services/images.service';
+import { CategoriesService } from '../../../services/categories.service';
 
 //   ------------- Components -------------
 import { PostsHomeComponent } from './components/posts-home/posts-home.component';
@@ -26,10 +25,12 @@ const ROUTES: Routes = [
      children: [
        {path: 'posts',
       children: [
-        {path: 'add', component: PostsAddComponent},
-        {path: 'home/:page', component: PostsHomeComponent},
-        {path: ':title/:id', component: PostsEditComponent}
-
+        {path: 'content',
+        children: [
+          {path: 'add', component: PostsAddComponent},
+          {path: 'home/:page', component: PostsHomeComponent},
+          {path: ':title/:id', component: PostsEditComponent}
+        ]}
       ]
      }
      ]
@@ -51,10 +52,7 @@ const ROUTES: Routes = [
     MatButtonModule,
     MatCardModule,
     ConfirmationPopoverModule,
-    ConfirmationPopoverModule.forRoot({
-      confirmButtonType: 'danger' // set defaults here
-    }),
-    SnotifyModule
+    ConfirmationPopoverModule.forRoot({confirmButtonType: 'danger'})
   ],
   declarations: [
     PostsHomeComponent,

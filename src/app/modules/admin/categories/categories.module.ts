@@ -4,12 +4,11 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { MatInputModule, MatButtonModule, MatCardModule } from '@angular/material';
 import {ConfirmationPopoverModule} from 'angular-confirmation-popover';
 
 //   ------------- Services -------------
-import { CategoriesService } from './../../../services/categories.service';
+import { CategoriesService } from '../../../services/categories.service';
 
 //   ------------- Components -------------
 import { CategoriesHomeComponent } from './components/categories-home/categories-home.component';
@@ -24,9 +23,12 @@ const ROUTES: Routes = [
      children: [
        {path: 'categories',
       children: [
-        {path: 'add', component: CategoriesAddComponent},
-        {path: 'home/:page', component: CategoriesHomeComponent},
-        {path: ':title/:id', component: CategoriesEditComponent}
+        {path: 'content',
+        children: [
+          {path: 'add', component: CategoriesAddComponent},
+          {path: 'home/:page', component: CategoriesHomeComponent},
+          {path: ':title/:id', component: CategoriesEditComponent}
+        ]}
       ]
      }
      ]
@@ -39,18 +41,13 @@ const ROUTES: Routes = [
   imports: [
     CommonModule,
     HttpClientModule,
-    RouterModule.forChild(
-      ROUTES
-    ),
+    RouterModule.forChild(ROUTES),
     FormsModule,
     MatInputModule,
     MatButtonModule,
     MatCardModule,
     ConfirmationPopoverModule,
-    ConfirmationPopoverModule.forRoot({
-      confirmButtonType: 'danger' // set defaults here
-    }),
-    SnotifyModule
+    ConfirmationPopoverModule.forRoot({confirmButtonType: 'danger'})
   ],
   declarations: [
     CategoriesHomeComponent,

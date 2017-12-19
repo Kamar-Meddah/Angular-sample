@@ -1,5 +1,5 @@
 <mat-card>
-    <a mat-mini-fab aria-hidden="true" routerLink="/admin/edit/posts/home/1" class="PT"><i class="fa fa-backward" aria-hidden="true"></i>
+    <a mat-mini-fab aria-hidden="true" routerLink="/admin/edit/posts/content/home/1" class="PT"><i class="fa fa-backward" aria-hidden="true"></i>
   <br><br></a>
     <mat-card-header>
         <mat-card-title class="cat">
@@ -38,7 +38,7 @@
                         <button mat-mini-fab class="success" type="submit">
                         <i class="fa fa-check" aria-hidden="true"></i>
                       </button>
-                     
+
                     </div>
                 </div>
 
@@ -47,7 +47,7 @@
                     <br><br>
                     <ul id="images">
                         <li class="list-unstyled" *ngFor="let image of images; let i=index" [attr.data-index]='i'>
-                            <a style="background-color: white;box-shadow: 0px 0px 0px 0px;border: 0px;" mwlConfirmationPopover [title]="title" [message]="message" (confirm)="deleteImg(image.id,i)">
+                            <a style="background-color: white;box-shadow: 0 0 0 0;border: 0;" mwlConfirmationPopover [title]="title" [message]="message" (confirm)="deleteImg(image.id,i)">
                                 <i class="fa fa-times t" aria-hidden="true"></i>
                             </a>
                             <br>

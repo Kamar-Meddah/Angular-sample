@@ -1,12 +1,12 @@
 import { Component, OnInit, ElementRef, ViewChild, EventEmitter, Output } from '@angular/core';
-import { Categorie } from './../../../../../interfaces/categorie';
-import { Image } from './../../../../../interfaces/image';
-import { CategoriesService } from './../../../../../services/categories.service';
-import { ImagesService } from './../../../../../services/images.service';
-import { PostsService } from './../../../../../services/posts.service';
+import { Categorie } from '../../../../../interfaces/categorie';
+import { Image } from '../../../../../interfaces/image';
+import { CategoriesService } from '../../../../../services/categories.service';
+import { ImagesService } from '../../../../../services/images.service';
+import { PostsService } from '../../../../../services/posts.service';
 import { Title } from '@angular/platform-browser';
-import { SnotifyService } from 'ng-snotify';
 import { ActivatedRoute } from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-posts-edit',
@@ -26,28 +26,20 @@ export class PostsEditComponent implements OnInit {
   public category: any;
   public length: number;
   public file: any;
-  private notifyConfig: Object;
   public id: number;
   @Output() onFileSelect: EventEmitter<File[]> = new EventEmitter();
   public title = 'Delete confirm';
   public message = 'delete selected Element ?';
-  public confirmClicked = false;
-  public cancelClicked = false;
+
 
   constructor(
     private Categories: CategoriesService,
     private Images: ImagesService,
     private Posts: PostsService,
     private titleService: Title,
-    private notify: SnotifyService,
+    private notify: ToastrService,
     private route: ActivatedRoute
   ) {
-     this.notifyConfig = {
-      timeout: 5000,
-      showProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true
-    };
     this.categories = [];
     this.length = 0;
    }
@@ -87,7 +79,7 @@ export class PostsEditComponent implements OnInit {
           this.images.push({'id': img.id, 'name': `${img.id}.jpg`, 'articleId': this.id});
         });
       }
-        this.notify.success('Post successfully updated', this.notifyConfig);
+        this.notify.success('Post successfully updated');
         this.file = [];
         this.files = [];
         this.length = 0;
@@ -113,7 +105,7 @@ export class PostsEditComponent implements OnInit {
   public deleteImg(id, index) {
     this.Images.delete(id).then((data) => {
       this.images.splice(index, 1);
-      this.notify.success('Image successfully Deleted', this.notifyConfig);
+      this.notify.success('Image successfully Deleted');
     });
   }
 

@@ -2,9 +2,9 @@
 
 @import "~font-awesome/css/font-awesome.min.css";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-@import "~ng-snotify/styles/material.css";
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "../node_modules/lightbox2/dist/css/lightbox.min.css";
+@import "~ngx-toastr/toastr.css";
 
 /* custom style  */
 
@@ -26,38 +26,24 @@
 
 body {
     padding-top: 6em;
-    /*
-        background: linear-gradient(transparent, transparent), url("../img/6.jpg") no-repeat fixed;
-    background-blend-mode: multiply;
-    background-size: cover;
-    color: white;
-    */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
-a,
-.blue {
+a, .blue {
     color: var(--primary);
 }
 
-
 /* the search button*/
-
 .admin button {
     background-color: var(--primary);
 }
-
 a:hover {
     text-decoration: none;
 }
-
-
 /* the search input */
-
 .control {
     border-radius: 0.3em;
 }
-
 .control:focus:valid {
     border-color: green;
 }
@@ -133,7 +119,6 @@ div>p>h1 {
         display: none;
     }
 }
-
 .page-link{
     color:black;
 }

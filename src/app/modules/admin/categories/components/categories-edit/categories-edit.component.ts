@@ -1,8 +1,9 @@
+
 import { Component, OnInit } from '@angular/core';
-import { CategoriesService } from './../../../../../services/categories.service';
+import { CategoriesService } from '../../../../../services/categories.service';
 import { Title } from '@angular/platform-browser';
-import { SnotifyService } from 'ng-snotify';
 import { ActivatedRoute } from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-categories-edit',
@@ -13,21 +14,14 @@ export class CategoriesEditComponent implements OnInit {
 
 
   public titre: String;
-  private notifyConfig: Object;
   private id: number;
 
   constructor(
     private Service: CategoriesService,
     private titleService: Title,
-    private notify: SnotifyService,
+    private notify: ToastrService,
     private router: ActivatedRoute
   ) {
-    this.notifyConfig = {
-      timeout: 5000,
-      showProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true
-    };
     this.router.params.subscribe((params) => {
       this.titre = params.title;
     });
@@ -45,7 +39,7 @@ export class CategoriesEditComponent implements OnInit {
   public update (): void {
     this.Service.edit(this.titre, this.id).then ((data) => {
       this.titre = '';
-      this.notify.success('Categorie successfully upated', this.notifyConfig);
+      this.notify.success('Categorie successfully upated');
     });
   }
 

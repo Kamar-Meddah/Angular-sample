@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.isAdmin = this.Users.isAdmin();
-     // this.user = jwtDecode(localStorage.getItem('token')).username;
+    this.user = jwtDecode(localStorage.getItem('token')).username;
   }
 
 }

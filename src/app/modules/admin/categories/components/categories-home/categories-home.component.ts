@@ -3,7 +3,8 @@ import { CategoriesService } from './../../../../../services/categories.service'
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Categorie } from './../../../../../interfaces/categorie';
-import { SnotifyService } from 'ng-snotify';
+import {ToastrService} from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-categories-home',
@@ -21,30 +22,22 @@ export class CategoriesHomeComponent implements OnInit {
   private url: String;
   private loop: Boolean;
 
-  private notifyConfig: Object;
   // ---
   public title = 'Delete confirm';
   public message = 'delete selected comment ?';
-  public confirmClicked = false;
-  public cancelClicked = false;
+
 
   constructor(
     private Service: CategoriesService,
     private titleService: Title,
     private route: ActivatedRoute,
-    private notify: SnotifyService
+    private notify: ToastrService
   ) {
     this.setTitle('categories');
     this.loop = false;
     this.pages = [];
     this.loading = true;
     this.getPage();
-    this.notifyConfig = {
-      timeout: 5000,
-      showProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true
-    };
    }
 
   ngOnInit() {
@@ -96,14 +89,14 @@ export class CategoriesHomeComponent implements OnInit {
   public delete (id: number, index: number): void {
     this.Service.delete(id).then((data) => {
       if (data.num === 0) {
-        this.notify.success('Categorie succesfully deleted', this.notifyConfig);
+        this.notify.success('Categorie succesfully deleted');
         this.categories[index] = {
           deleted : true,
           id: null,
           titre: 'This Content no longer Exist'
         };
       } else {
-        this.notify.error('Can not delete, This categorie is not empty !!', this.notifyConfig);
+        this.notify.error('Can not delete, This categorie is not empty !!');
       }
     });
 

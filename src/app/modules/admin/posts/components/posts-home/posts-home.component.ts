@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { PostsService } from './../../../../../services/posts.service';
+import { PostsService } from '../../../../../services/posts.service';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-import { SnotifyService } from 'ng-snotify';
-import { Post } from './../../../../../interfaces/post';
-import { Categorie } from './../../../../../interfaces/categorie';
+import { Post } from '../../../../../interfaces/post';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-posts-home',
@@ -22,30 +21,20 @@ export class PostsHomeComponent implements OnInit {
   private url: String;
   private loop: Boolean;
 
-  private notifyConfig: Object;
-  // ---
   public title = 'Delete confirm';
   public message = 'delete selected Element ?';
-  public confirmClicked = false;
-  public cancelClicked = false;
 
   constructor(
     private Service: PostsService,
     private titleService: Title,
     private route: ActivatedRoute,
-    private notify: SnotifyService
+    private notify: ToastrService
   ) {
     this.setTitle('categories');
     this.loop = false;
     this.pages = [];
     this.loading = true;
     this.getPage();
-    this.notifyConfig = {
-      timeout: 5000,
-      showProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true
-    };
   }
 
   ngOnInit() {
@@ -61,7 +50,7 @@ export class PostsHomeComponent implements OnInit {
     }
       this.posts = data.art;
       this.loading = false;
-      this.disabled = this.page < data.nbpage ? false : true;
+      this.disabled = this.page >= data.nbpage;
     });
   }
   });
@@ -97,7 +86,7 @@ export class PostsHomeComponent implements OnInit {
   public delete (id: number, index: number): void {
 
     this.Service.delete(id).then((data) => {
-        this.notify.success('Post succesfully deleted', this.notifyConfig);
+        this.notify.success('Post succesfully deleted');
         this.posts[index] = {
           titre: 'no longer Exist',
           deleted : true,

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from './../../../../services/users.service';
-import { SnotifyService } from 'ng-snotify';
+import { UsersService } from '../../../../services/users.service';
 import { Title } from '@angular/platform-browser';
 import * as jwtDecode from 'jwt-decode';
-
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-password-edit',
@@ -16,22 +15,13 @@ export class PasswordEditComponent implements OnInit {
   public newPassword: String;
   private id: number;
 
-  private notifyConfig: Object;
 
   constructor(
               private Users: UsersService,
-              private notify: SnotifyService,
+              private notify: ToastrService,
               private titleService: Title
             ) {
-               this.notifyConfig = {
-                 timeout: 5000,
-                 showProgressBar: false,
-                 closeOnClick: true,
-                 pauseOnHover: true
-               };
-
                 this.id = jwtDecode(localStorage.getItem('token')).sub;
-
               }
 
   ngOnInit() {
@@ -43,11 +33,11 @@ export class PasswordEditComponent implements OnInit {
     this.Users.checkPass(this.id, this.oldPassword).then((data) => {
       if (data) {
           this.Users.changePass(this.id, this.newPassword);
-          this.notify.success('Password successfully changed', this.notifyConfig);
+          this.notify.success('Password successfully changed');
           this.newPassword = '';
           this.oldPassword = '';
       } else {
-        this.notify.error('Wrong password', this.notifyConfig);
+        this.notify.error('Wrong password');
       }
     });
   }

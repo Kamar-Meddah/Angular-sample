@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from './../../../../services/users.service';
+import { UsersService } from '../../../../services/users.service';
 import { Router } from '@angular/router';
-import { SnotifyService } from 'ng-snotify';
 import { Title } from '@angular/platform-browser';
-import { NavBarComponent } from './../../../../components/nav-bar/nav-bar.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -15,21 +14,14 @@ export class LoginComponent implements OnInit {
   public email: String;
   public password: String;
   //  -------
-  private notifyConfig: Object;
+
 
   constructor(
              private Users: UsersService,
              private route: Router,
-             private notify: SnotifyService,
+             private notify: ToastrService,
              private titleService: Title
-            ) {
-              this.notifyConfig = {
-                timeout: 5000,
-                showProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true
-              };
-            }
+            ) {}
 
   ngOnInit() {
     this.setTitle(`Login`);
@@ -42,12 +34,12 @@ export class LoginComponent implements OnInit {
 
       if (data.bool === true) {
         localStorage.setItem('token', data.token);
-        this.notify.success('Welcome to the administration', this.notifyConfig);
+        this.notify.success('Welcome to the administration');
         this.Users.change();
         this.route.navigate([`/admin/home`]);
 
       } else {
-        this.notify.error('Wrong email or password', this.notifyConfig);
+        this.notify.error('Wrong email or password');
       }
     });
 
@@ -57,12 +49,7 @@ export class LoginComponent implements OnInit {
 
         if (this.Users.isLogged()) {
 
-          this.notify.warning('already logged', this.notifyConfig);
-          this.route.navigate([`/`]);
-
-        } else if (this.Users.isAdmin()) {
-
-          this.notify.warning('already logged', this.notifyConfig);
+          this.notify.warning('already logged');
           this.route.navigate([`/admin/home`]);
 
         }
@@ -70,9 +57,7 @@ export class LoginComponent implements OnInit {
   }
 
   private setTitle( newTitle: string): void {
-
     this.titleService.setTitle( newTitle );
-
   }
 
 }

@@ -1,9 +1,9 @@
 import { Injectable, EventEmitter} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { SnotifyService } from 'ng-snotify';
 import * as jwtDecode from 'jwt-decode';
 import Constants from '../config/Constants';
+import {ToastrService} from 'ngx-toastr';
 
 @Injectable()
 export class UsersService {
@@ -12,21 +12,14 @@ export class UsersService {
   admin: EventEmitter<any> = new EventEmitter();
   private server: string;
   public token: string;
-  public notifyConfig: Object;
 
   constructor(
     private http: HttpClient,
     private route: Router,
-    private notify: SnotifyService
+    private notify: ToastrService
   ) {
-
-    this.notifyConfig = {
-      timeout: 5000,
-      showProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true
-    };
     this.server = Constants.SERVER;
+    this.checkToken();
     this.token = localStorage.getItem('token');
   }
 
@@ -128,7 +121,7 @@ export class UsersService {
           if (!data.bool) {
             this.logout();
             this.change();
-            this.notify.warning('Session expired ,you are disconnected', this.notifyConfig);
+            this.notify.warning('Session expired ,you are disconnected');
             this.route.navigate([`/`]);
           }
         });

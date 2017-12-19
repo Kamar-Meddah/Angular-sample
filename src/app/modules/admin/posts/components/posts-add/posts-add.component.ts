@@ -1,11 +1,10 @@
 import { Component, OnInit, ViewChild, ElementRef, EventEmitter, Output} from '@angular/core';
-import { CategoriesService } from './../../../../../services/categories.service';
+import { CategoriesService } from '../../../../../services/categories.service';
 import { Title } from '@angular/platform-browser';
-import { SnotifyService } from 'ng-snotify';
-import { Categorie } from './../../../../../interfaces/categorie';
-import { Image } from './../../../../../interfaces/image';
-import { PostsService } from './../../../../../services/posts.service';
+import { Categorie } from '../../../../../interfaces/categorie';
+import { PostsService } from '../../../../../services/posts.service';
 import { Router } from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-posts-add',
@@ -24,22 +23,15 @@ export class PostsAddComponent implements OnInit {
   public category: any;
   public length: number;
   public file: any;
-  private notifyConfig: Object;
   @Output() onFileSelect: EventEmitter<File[]> = new EventEmitter();
 
   constructor(
     private Categories: CategoriesService,
     private Posts: PostsService,
     private titleService: Title,
-    private notify: SnotifyService,
+    private notify: ToastrService,
     private route: Router
   ) {
-     this.notifyConfig = {
-      timeout: 5000,
-      showProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true
-    };
     this.categories = [];
     this.length = 0;
    }
@@ -62,7 +54,7 @@ export class PostsAddComponent implements OnInit {
       formElement.append('category', this.category);
       formElement.append('request', 'Articles.add');
       this.Posts.insert(formElement).then((data) => {
-        this.notify.success('Post successfully created', this.notifyConfig);
+        this.notify.success('Post successfully created');
         this.route.navigate([`admin/edit/posts/${this.titre}/${data.id}`]);
         this.file = [];
         this.files = [];
@@ -73,10 +65,9 @@ export class PostsAddComponent implements OnInit {
       }, (err) => {
         console.log(err);
       });
-    }else {
-      this.notify.error('Category field is empty !!', this.notifyConfig);
+    } else {
+      this.notify.error('Category field is empty !!');
     }
-
   }
 
   FileSelect($event): void {
