@@ -9,7 +9,6 @@ import { MatInputModule, MatButtonModule, MatCardModule, MatSelectModule} from '
 import {ConfirmationPopoverModule} from 'angular-confirmation-popover';
 
 //   ------------- Services -------------
-import { AuthGuard } from './../../../guards/auth.guard';
 import { PostsService } from './../../../services/posts.service';
 import { ImagesService } from './../../../services/images.service';
 import { CategoriesService } from './../../../services/categories.service';
@@ -21,7 +20,7 @@ import { PostsAddComponent } from './components/posts-add/posts-add.component';
 
 //   ------------- Routes ------------
 const ROUTES: Routes = [
-  {path: '', canActivate: [AuthGuard],
+  {path: '',
   children: [
     {path: 'edit',
      children: [
@@ -63,7 +62,6 @@ const ROUTES: Routes = [
     PostsAddComponent
   ],
   providers: [
-    AuthGuard,
     PostsService,
     ImagesService,
     CategoriesService

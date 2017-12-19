@@ -9,7 +9,6 @@ import { MatInputModule, MatButtonModule, MatCardModule } from '@angular/materia
 import {ConfirmationPopoverModule} from 'angular-confirmation-popover';
 
 //   ------------- Services -------------
-import { AuthGuard } from './../../../guards/auth.guard';
 import { CategoriesService } from './../../../services/categories.service';
 
 //   ------------- Components -------------
@@ -19,7 +18,7 @@ import { CategoriesAddComponent } from './components/categories-add/categories-a
 
 //   ------------- Routes ------------
 const ROUTES: Routes = [
-  {path: '', canActivate: [AuthGuard],
+  {path: '',
   children: [
     {path: 'edit',
      children: [
@@ -59,7 +58,6 @@ const ROUTES: Routes = [
     CategoriesAddComponent
   ],
   providers: [
-    AuthGuard,
     CategoriesService
   ]
 })

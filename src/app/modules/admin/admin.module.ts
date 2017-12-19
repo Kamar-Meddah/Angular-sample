@@ -11,7 +11,6 @@ import { PostsModule } from './posts/posts.module';
 
 //   ------------- Services -------------
 import { UsersService } from './../../services/users.service';
-import { AuthGuard } from './../../guards/auth.guard';
 import { UserGuard } from './../../guards/user.guard';
 
 //   ------------- Components -------------
@@ -21,13 +20,20 @@ import { PasswordEditComponent } from './components/password-edit/password-edit.
 
 //   ------------- Routes ------------
 const ROUTES: Routes = [
-  {path: '', canActivate: [UserGuard],
+  {path: '',
   children: [
     {path: 'home', component: HomeComponent},
     {path: 'edit',
      children: [
-       {path: 'username', component: UsernameEditComponent},
-       {path: 'password', component: PasswordEditComponent}
+       {path: 'user',
+          children: [
+            {path: 'settings',
+            children: [
+              {path: 'username', component: UsernameEditComponent,  pathMatch: 'full'},
+              {path: 'password', component: PasswordEditComponent}
+            ]}
+          ]
+       }
      ]
     }
   ]
@@ -57,7 +63,6 @@ const ROUTES: Routes = [
                 PasswordEditComponent
                 ],
   providers: [
-    AuthGuard,
     UserGuard,
     UsersService,
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults},

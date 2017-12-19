@@ -12,15 +12,16 @@ import {PostsModule} from './modules/guest/posts.module';
 //  ----------------- Components ---------------
 import {AppComponent} from './app.component';
 import {NavBarComponent} from './components/nav-bar/nav-bar.component';
-import {NotFoundComponent} from './components/not-found/not-found.component';
 
 //  --------------- Services -------------------
 import {UsersService} from './services/users.service';
+import { UserGuard } from './guards/user.guard';
+import {NotFoundComponent} from "./components/not-found/not-found.component";
 
 //  -----------------
 const ROUTES: Routes = [
-  {path: 'admin', loadChildren: './modules/admin/admin.module#AdminModule'},
-  {path: '**', component: NotFoundComponent}
+  {path: 'admin', canActivate: [UserGuard], loadChildren: './modules/admin/admin.module#AdminModule'},
+  {path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({
@@ -30,10 +31,10 @@ const ROUTES: Routes = [
     NotFoundComponent
   ],
   imports: [
-    BrowserModule,
     ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
-    PostsModule,
+    BrowserModule,
     RouterModule.forRoot(ROUTES),
+    PostsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -42,7 +43,8 @@ const ROUTES: Routes = [
   providers: [
     UsersService,
     {provide: 'SnotifyToastConfig', useValue: ToastDefaults},
-    SnotifyService
+    SnotifyService,
+    UserGuard
   ],
   bootstrap: [AppComponent]
 })
