@@ -12,11 +12,11 @@ export class CommentsService {
 
     return new Promise((resolve, reject) => {
       this.Http.get(`${Constants.SERVER}?request=Comments.find&id=${id}`)
-        .subscribe((data) => {
+        .toPromise().then((data) => {
           resolve(data);
-        }, (err) => {
-          reject(err);
-        });
+        }).catch((err) => {
+        reject(err);
+      });
     });
 
   }
@@ -25,26 +25,24 @@ export class CommentsService {
 
     return new Promise((resolve, reject) => {
       this.Http.post(Constants.SERVER, {request: 'Comments.add', postId: id, name: name, comment: comment})
-        .subscribe((data) => {
+        .toPromise().then((data) => {
           resolve(data);
-        }, (err) => {
-          reject(err);
-        });
+        }).catch((err) => {
+        reject(err);
+      });
     });
 
   }
 
   public delete(id: Number): Promise<any> {
-
     return new Promise((resolve, reject) => {
       this.Http.post(Constants.SERVER, {request: 'Comments.delete', id: id})
-        .subscribe((data) => {
+        .toPromise().then((data) => {
           resolve(data);
-        }, (err) => {
+        }).catch((err) => {
           reject(err);
-        });
+      });
     });
-
   }
 
 }

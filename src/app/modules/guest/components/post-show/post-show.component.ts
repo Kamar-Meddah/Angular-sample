@@ -29,7 +29,7 @@ export class PostShowComponent implements OnInit {
   public comment: String;
   public logged: Boolean;
   public isAdmin: Boolean;
-  public order: String;
+  public order: Boolean | String;
   private username: String;
   // ---
   public title = 'Delete confirm';
@@ -47,6 +47,7 @@ export class PostShowComponent implements OnInit {
               private titleService: Title
 
             ) {
+              this.order = true;
               this.loading = true;
               this.post = {category: {}};
               this.images = [];
@@ -156,6 +157,9 @@ export class PostShowComponent implements OnInit {
 
   private setTitle( newTitle: string): void {
     this.titleService.setTitle( newTitle );
+  }
+ change() {
+    this.order = this.order === 'true';
   }
 
 }

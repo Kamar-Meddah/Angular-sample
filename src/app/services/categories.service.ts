@@ -5,8 +5,6 @@ import Constants from '../config/Constants';
 @Injectable()
 export class CategoriesService {
 
-  private server: string;
-
   constructor(private http: HttpClient) {
   }
 
@@ -14,11 +12,11 @@ export class CategoriesService {
 
     return new Promise((resolve, reject) => {
       this.http.get(`${Constants.SERVER}?request=Categories.all`)
-        .subscribe((data) => {
+        .toPromise().then((data) => {
           resolve(data);
-        }, (err) => {
-          reject(err);
-        });
+        }).catch((err) => {
+        reject(err);
+      });
     });
 
   }
@@ -27,37 +25,35 @@ export class CategoriesService {
 
     return new Promise((resolve, reject) => {
       this.http.get(`${Constants.SERVER}?request=Categories.index&page=${page}`)
-        .subscribe((data: Object) => {
+        .toPromise().then((data: Object) => {
           resolve(data);
-        }, (err) => {
-          reject(err);
-        });
+        }).catch((err) => {
+          reject (err);
+      });
     });
-
   }
 
   public delete(id: Number): Promise<any> {
 
     return new Promise((resolve, reject) => {
       this.http.post(Constants.SERVER, {request: 'Categories.delete', id: id})
-        .subscribe((data) => {
+        .toPromise().then((data) => {
           resolve(data);
-        }, (err) => {
-          console.log(err);
-        });
+        }).catch((err) => {
+          reject(err);
+      });
     });
 
   }
 
   public insert(titre: String): Promise<any> {
-
     return new Promise((resolve, reject) => {
       this.http.post(Constants.SERVER, {request: 'Categories.add', title: titre})
-        .subscribe((data) => {
+        .toPromise().then((data) => {
           resolve(data);
-        }, (err) => {
-          console.log(err);
-        });
+        }).catch((err) => {
+        reject(err);
+      });
     });
 
   }
@@ -65,11 +61,11 @@ export class CategoriesService {
   public edit(titre: String, id: Number): Promise<any> {
     return new Promise((resolve, reject) => {
       this.http.post(Constants.SERVER, {request: 'Categories.edit', title: titre, id: id})
-        .subscribe((data) => {
+        .toPromise().then((data) => {
           resolve(data);
-        }, (err) => {
-          console.log(err);
-        });
+        }).catch((err) => {
+          reject(err);
+      });
     });
   }
 }

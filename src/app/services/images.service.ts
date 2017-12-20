@@ -12,11 +12,11 @@ export class ImagesService {
 
     return new Promise((resolve, reject) => {
       this.http.get(`${Constants.SERVER}?request=Images.find&id=${id}`)
-        .subscribe((data) => {
+        .toPromise().then((data) => {
           resolve(data);
-        }, (err) => {
+        }).catch((err) => {
           reject(err);
-        });
+      });
     });
 
   }
@@ -24,11 +24,11 @@ export class ImagesService {
   public delete(id: Number): Promise<any> {
     return new Promise((resolve, reject) => {
       this.http.post(Constants.SERVER, {request: 'Images.delete', id: id})
-        .subscribe((data) => {
+        .toPromise().then((data) => {
           resolve(data);
-        }, (err) => {
+        }).catch((err) => {
           reject(err);
-        });
+      });
     });
   }
 }

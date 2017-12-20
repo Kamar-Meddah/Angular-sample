@@ -31,13 +31,11 @@ export class LoginComponent implements OnInit {
   public login (): void {
 
     this.Users.login(this.email, this.password).then((data) => {
-
       if (data.bool === true) {
         localStorage.setItem('token', data.token);
         this.notify.success('Welcome to the administration');
         this.Users.change();
         this.route.navigate([`/admin/home`]);
-
       } else {
         this.notify.error('Wrong email or password');
       }

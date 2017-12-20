@@ -20,7 +20,7 @@ export class UsersService {
   ) {
     this.server = Constants.SERVER;
     this.token = localStorage.getItem('token');
-    if (this.token) {this.checkToken();}
+    if (this.token) {this.checkToken(); }
   }
 
   public isLogged (): boolean {
@@ -39,9 +39,9 @@ export class UsersService {
 
     return new Promise ((resolve, reject) => {
       this.http.post(this.server, { request: 'Users.passwordCheck', 'password': password, 'id': id })
-      .subscribe((data) => {
+      .toPromise().then((data) => {
         resolve (data);
-      }, (err) => {
+      }).catch((err) => {
         reject (err);
       });
     });
@@ -52,9 +52,9 @@ export class UsersService {
 
     return new Promise ((resolve, reject) => {
       this.http.post(this.server, { request: 'Users.login', email: email, password: passsword })
-      .subscribe((data) => {
+      .toPromise().then((data) => {
         resolve (data);
-      }, (err) => {
+      }).catch((err) => {
         reject (err);
       });
     });
@@ -65,9 +65,9 @@ export class UsersService {
 
         return new Promise ((resolve, reject) => {
           this.http.post(this.server, { request: 'Users.register', email: email, password: passsword, username: username })
-          .subscribe((data) => {
+          .toPromise().then((data) => {
             resolve (data);
-          }, (err) => {
+          }).catch((err) => {
             reject (err);
           });
         });
@@ -81,8 +81,7 @@ export class UsersService {
   public changeUsername (id: Number, username: String): void {
 
       this.http.post(this.server, { request: 'Users.usernameChange', 'id': id, 'username': username})
-      .subscribe((data) => {
-      }, (err) => {
+      .toPromise().catch((err) => {
         console.log(err);
       });
 
@@ -92,13 +91,12 @@ export class UsersService {
 
     return new Promise ((resolve, reject) => {
       this.http.post(this.server, { request: 'Users.passwordChange', 'id': id, 'password': password })
-      .subscribe((data) => {
+      .toPromise().then((data) => {
         resolve (data);
-      }, (err) => {
+      }).catch((err) => {
         reject (err);
       });
     });
-
   }
 
   public getEmitedValue (): any {
@@ -117,7 +115,7 @@ export class UsersService {
   private checkToken (): void {
       this.http.post(this.server,
         { request: 'Users.tokenCheck', 'token': this.token})
-        .subscribe((data: {bool: boolean}) => {
+        .toPromise().then((data: {bool: boolean}) => {
           if (!data.bool) {
             this.logout();
             this.change();

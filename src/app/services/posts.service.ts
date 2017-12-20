@@ -14,11 +14,11 @@ export class PostsService {
   public find(id: Number): Promise<any> {
     return new Promise((resolve, reject) => {
       this.http.get(`${this.server}?request=Articles.show&id=${id}`)
-        .subscribe((data) => {
+        .toPromise().then((data) => {
           resolve(data);
-        }, (err) => {
+        }).catch((err) => {
           reject(err);
-        });
+      });
     });
 
   }
@@ -27,11 +27,11 @@ export class PostsService {
 
     return new Promise((resolve, reject) => {
       this.http.get(`${this.server}?request=Articles.index&page=${page}`)
-        .subscribe((data: Object) => {
+        .toPromise().then((data: Object) => {
           resolve(data);
-        }, (err) => {
+        }).catch((err) => {
           reject(err);
-        });
+      });
     });
 
   }
@@ -40,11 +40,11 @@ export class PostsService {
 
     return new Promise((resolve, reject) => {
       this.http.post(this.server, {request: 'Articles.delete', id: id})
-        .subscribe((data) => {
+        .toPromise().then((data) => {
           resolve(data);
-        }, (err) => {
-          console.log(err);
-        });
+        }).catch((err) => {
+        reject(err);
+      });
     });
 
   }
@@ -53,11 +53,11 @@ export class PostsService {
 
     return new Promise((resolve, reject) => {
       this.http.post(this.server, form)
-        .subscribe((data) => {
+        .toPromise().then((data) => {
           resolve(data);
-        }, (err) => {
-          console.log(err);
-        });
+        }).catch((err) => {
+        reject(err);
+      });
     });
 
   }
@@ -66,11 +66,11 @@ export class PostsService {
 
     return new Promise((resolve, reject) => {
       this.http.post(this.server, form)
-        .subscribe((data) => {
+        .toPromise().then((data) => {
           resolve(data);
-        }, (err) => {
-          console.log(err);
-        });
+        }).catch((err) => {
+        reject(err);
+      });
     });
 
   }
@@ -79,11 +79,11 @@ export class PostsService {
 
     return new Promise((resolve, reject) => {
       this.http.get(`${this.server}?request=Articles.byCategorie&category_id=${id}&page=${page}`)
-        .subscribe((data) => {
+        .toPromise().then((data) => {
           resolve(data);
-        }, (err) => {
-          reject(err);
-        });
+        }).catch((err) => {
+          reject (err);
+      });
     });
 
   }
@@ -92,11 +92,11 @@ export class PostsService {
 
     return new Promise((resolve, reject) => {
       this.http.get(`${this.server}?request=Articles.search&search=${request}&page=${page}`)
-        .subscribe((data) => {
+        .toPromise().then((data) => {
           resolve(data);
-        }, (err) => {
+        }).catch((err) => {
           reject(err);
-        });
+      });
     });
 
   }

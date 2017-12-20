@@ -44,10 +44,7 @@ const ROUTES: Routes = [
     FormsModule,
     ToastrModule.forRoot({positionClass: 'toast-bottom-right', timeOut: 4000})
   ],
-  providers: [
-
-    UserGuard
-  ],
+  providers: [UserGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {
