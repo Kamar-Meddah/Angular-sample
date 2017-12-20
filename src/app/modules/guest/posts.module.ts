@@ -9,12 +9,6 @@ import {MatInputModule, MatButtonModule, MatCardModule, MatSelectModule} from '@
 import { OrderModule } from 'ngx-order-pipe';
 import {ConfirmationPopoverModule} from 'angular-confirmation-popover';
 
-//   ------------- Services -------------
-import { CategoriesService } from '../../services/categories.service';
-import { PostsService } from '../../services/posts.service';
-import { CommentsService } from '../../services/comments.service';
-import { ImagesService } from '../../services/images.service';
-import { UsersService } from '../../services/users.service';
 
 //   ------------- Components -------------
 import { HomeComponent } from './components/home/home.component';
@@ -60,13 +54,7 @@ const ROUTES: Routes = [
     LoginComponent,
     RegisterComponent
   ],
-  providers: [
-    CategoriesService,
-    PostsService,
-    ImagesService,
-    UsersService,
-    CommentsService
-  ],
+  providers: [],
   exports: [
     RouterModule
   ]

@@ -7,9 +7,6 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule, MatButtonModule, MatCardModule } from '@angular/material';
 import {ConfirmationPopoverModule} from 'angular-confirmation-popover';
 
-//   ------------- Services -------------
-import { CategoriesService } from '../../../services/categories.service';
-
 //   ------------- Components -------------
 import { CategoriesHomeComponent } from './components/categories-home/categories-home.component';
 import { CategoriesEditComponent } from './components/categories-edit/categories-edit.component';
@@ -54,8 +51,6 @@ const ROUTES: Routes = [
     CategoriesEditComponent,
     CategoriesAddComponent
   ],
-  providers: [
-    CategoriesService
-  ]
+  providers: []
 })
 export class CategoriesModule { }

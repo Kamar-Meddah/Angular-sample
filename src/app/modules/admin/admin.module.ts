@@ -8,9 +8,6 @@ import { MatInputModule, MatButtonModule, MatCardModule } from '@angular/materia
 import { CategoriesModule } from './categories/categories.module';
 import { PostsModule } from './posts/posts.module';
 
-//   ------------- Services -------------
-import { UsersService } from '../../services/users.service';
-
 //   ------------- Components -------------
 import { HomeComponent } from './components/home/home.component';
 import { UsernameEditComponent } from './components/username-edit/username-edit.component';
@@ -44,7 +41,6 @@ const ROUTES: Routes = [
     RouterModule.forChild(ROUTES),
     HttpClientModule,
     FormsModule,
-    FormsModule,
     MatInputModule,
     MatButtonModule,
     MatCardModule,
@@ -56,12 +52,8 @@ const ROUTES: Routes = [
                 UsernameEditComponent,
                 PasswordEditComponent
                 ],
-  providers: [
-    UsersService,
-  ],
-  exports: [
-    RouterModule
-  ]
+  providers: [],
+  exports: [RouterModule]
 })
 
 export class AdminModule { }

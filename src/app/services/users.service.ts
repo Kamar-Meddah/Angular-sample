@@ -19,8 +19,8 @@ export class UsersService {
     private notify: ToastrService
   ) {
     this.server = Constants.SERVER;
-    this.checkToken();
     this.token = localStorage.getItem('token');
+    if (this.token) {this.checkToken();}
   }
 
   public isLogged (): boolean {
@@ -109,7 +109,7 @@ export class UsersService {
     return this.admin;
   }
 
-  public change (): any {
+  public change (): void {
     this.logged.emit(this.isLogged());
     this.admin.emit(this.isAdmin());
   }

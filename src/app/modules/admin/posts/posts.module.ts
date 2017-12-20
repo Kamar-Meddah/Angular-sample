@@ -7,10 +7,6 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule, MatButtonModule, MatCardModule, MatSelectModule} from '@angular/material';
 import {ConfirmationPopoverModule} from 'angular-confirmation-popover';
 
-//   ------------- Services -------------
-import { PostsService } from '../../../services/posts.service';
-import { ImagesService } from '../../../services/images.service';
-import { CategoriesService } from '../../../services/categories.service';
 
 //   ------------- Components -------------
 import { PostsHomeComponent } from './components/posts-home/posts-home.component';
@@ -59,11 +55,7 @@ const ROUTES: Routes = [
     PostsEditComponent,
     PostsAddComponent
   ],
-  providers: [
-    PostsService,
-    ImagesService,
-    CategoriesService
-  ],
+  providers: [],
   exports: [RouterModule]
 })
 export class PostsModule { }

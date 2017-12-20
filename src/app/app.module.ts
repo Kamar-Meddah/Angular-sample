@@ -8,16 +8,18 @@ import {FormsModule} from '@angular/forms';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
 
+import {CoreServicesModule} from './modules/core-services/core-services.module';
 import {PostsModule} from './modules/guest/posts.module';
 import { ToastrModule } from 'ngx-toastr';
 //  ----------------- Components ---------------
 import {AppComponent} from './app.component';
 import {NavBarComponent} from './components/nav-bar/nav-bar.component';
+import {NotFoundComponent} from './components/not-found/not-found.component';
 
 //  --------------- Services -------------------
-import {UsersService} from './services/users.service';
 import { UserGuard } from './guards/user.guard';
-import {NotFoundComponent} from './components/not-found/not-found.component';
+
+
 
 //  -----------------
 const ROUTES: Routes = [
@@ -34,6 +36,7 @@ const ROUTES: Routes = [
   imports: [
     ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
     BrowserModule,
+    CoreServicesModule,
     RouterModule.forRoot(ROUTES),
     PostsModule,
     HttpClientModule,
@@ -42,7 +45,7 @@ const ROUTES: Routes = [
     ToastrModule.forRoot({positionClass: 'toast-bottom-right', timeOut: 4000})
   ],
   providers: [
-    UsersService,
+
     UserGuard
   ],
   bootstrap: [AppComponent]
