@@ -36,18 +36,15 @@
             "name":"test",
             "urls":[
                 "http://localhost/img/articles/*.jpg",
+                "http://localhost/Articles/index",
+                "http://localhost/Articles/show",
+                "http://localhost/Articles/byCategorie",
+                "http://localhost/Articles/search",
+                "http://localhost/Categories/all",
+                "http://localhost/Categories/index",
+                "http://localhost/Comments/find",
+                "http://localhost/Images/find",
 
-                "http://localhost/?request=Categories.all",
-                "http://localhost/?request=Categories.index&page",
-
-                "http://localhost/?request=Images.find&id",
-
-                "http://localhost/?request=Articles.index&page",
-                "http://localhost/?request=Articles.show&id",
-                "http://localhost/?request=Articles.byCategorie&category_id&page",
-                "http://localhost/?request=Articles.search&search&page",
-
-                "http://localhost/?request=Comments.find&id"
                 
             ],
             "cacheConfig":{
