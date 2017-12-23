@@ -11,7 +11,7 @@ export class CategoriesService {
   public getAll(): Promise<any> {
 
     return new Promise((resolve, reject) => {
-      this.http.get(`${Constants.SERVER}?request=Categories.all`)
+      this.http.get(`${Constants.SERVER}Categories/all`)
         .toPromise().then((data) => {
           resolve(data);
         }).catch((err) => {
@@ -24,7 +24,7 @@ export class CategoriesService {
   public getAllPage(page: Number): Promise<any> {
 
     return new Promise((resolve, reject) => {
-      this.http.get(`${Constants.SERVER}?request=Categories.index&page=${page}`)
+      this.http.get(`${Constants.SERVER}Categories/index?page=${page}`)
         .toPromise().then((data: Object) => {
           resolve(data);
         }).catch((err) => {
@@ -36,7 +36,7 @@ export class CategoriesService {
   public delete(id: Number): Promise<any> {
 
     return new Promise((resolve, reject) => {
-      this.http.post(Constants.SERVER, {request: 'Categories.delete', id: id})
+      this.http.delete(Constants.SERVER + `Categories/delete?id=${id}`)
         .toPromise().then((data) => {
           resolve(data);
         }).catch((err) => {
@@ -48,7 +48,7 @@ export class CategoriesService {
 
   public insert(titre: String): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.http.post(Constants.SERVER, {request: 'Categories.add', title: titre})
+      this.http.post(Constants.SERVER + 'Categories/add', {title: titre})
         .toPromise().then((data) => {
           resolve(data);
         }).catch((err) => {
@@ -60,7 +60,7 @@ export class CategoriesService {
 
   public edit(titre: String, id: Number): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.http.post(Constants.SERVER, {request: 'Categories.edit', title: titre, id: id})
+      this.http.put(Constants.SERVER + 'Categories/edit', {title: titre, id: id})
         .toPromise().then((data) => {
           resolve(data);
         }).catch((err) => {

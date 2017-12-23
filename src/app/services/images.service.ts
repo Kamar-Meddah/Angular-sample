@@ -11,7 +11,7 @@ export class ImagesService {
   public find(id: Number): Promise<any> {
 
     return new Promise((resolve, reject) => {
-      this.http.get(`${Constants.SERVER}?request=Images.find&id=${id}`)
+      this.http.get(`${Constants.SERVER}Images/find?id=${id}`)
         .toPromise().then((data) => {
           resolve(data);
         }).catch((err) => {
@@ -23,7 +23,7 @@ export class ImagesService {
 
   public delete(id: Number): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.http.post(Constants.SERVER, {request: 'Images.delete', id: id})
+      this.http.delete(Constants.SERVER + `Images/delete?id=${id}`)
         .toPromise().then((data) => {
           resolve(data);
         }).catch((err) => {

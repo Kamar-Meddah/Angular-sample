@@ -55,7 +55,7 @@ export class PostsAddComponent implements OnInit {
       formElement.append('request', 'Articles.add');
       this.Posts.insert(formElement).then((data) => {
         this.notify.success('Post successfully created');
-        this.route.navigate([`admin/edit/posts/${this.titre}/${data.id}`]);
+        this.route.navigate([`admin/edit/posts/content/${this.titre}/${data.id}`]);
         this.file = [];
         this.files = [];
         this.length = 0;
