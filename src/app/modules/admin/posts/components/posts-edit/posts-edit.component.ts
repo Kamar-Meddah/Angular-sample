@@ -16,7 +16,6 @@ import {ToastrService} from 'ngx-toastr';
 export class PostsEditComponent implements OnInit {
 
   @ViewChild('inputFile') nativeInputFile: ElementRef;
-  @ViewChild('form') a: ElementRef;
 
   public titre: String;
   public contenu: String;

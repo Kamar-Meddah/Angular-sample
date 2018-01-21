@@ -2,12 +2,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { TimeSinceModule } from '@thisissoon/angular-timesince';
 import { FormsModule } from '@angular/forms';
-import {MatInputModule, MatButtonModule, MatCardModule, MatSelectModule} from '@angular/material';
+import { MatInputModule, MatButtonModule, MatCardModule, MatSelectModule } from '@angular/material';
 import { OrderModule } from 'ngx-order-pipe';
-import {ConfirmationPopoverModule} from 'angular-confirmation-popover';
+import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 
 
 //   ------------- Components -------------

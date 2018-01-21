@@ -9,8 +9,8 @@ export class UserGuard implements CanActivate {
 
   private logged: boolean;
 
-  constructor (private Users: UsersService, private route: Router) {
-  }
+  constructor (private Users: UsersService, private route: Router) {}
+
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {

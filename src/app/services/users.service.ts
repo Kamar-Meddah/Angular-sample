@@ -17,10 +17,7 @@ export class UsersService {
     private http: HttpClient,
     private route: Router,
     private notify: ToastrService
-  ) {
-    this.token = localStorage.getItem('token');
-    if (this.token) { this.checkToken(); }
-  }
+  ) {}
 
   public isLogged (): boolean {
     return localStorage.getItem('token') != null;
@@ -111,15 +108,14 @@ export class UsersService {
     this.admin.emit(this.isAdmin());
   }
 
-  private checkToken (): void {
+  public checkToken (): Promise <any>  {
+    return new Promise ((resolve, reject) => {
       this.http.post(Constants.SERVER + 'Users/tokenCheck', { 'token': this.token})
-        .toPromise().then((data: {bool: boolean}) => {
-          if (!data.bool) {
-            this.logout();
-            this.change();
-            this.notify.warning('Session expired ,you are disconnected');
-            this.route.navigate([`/`]);
-          }
-        });
+      .toPromise().then((data: {bool: boolean}) => {
+        resolve (data.bool);
+      }).catch(err => {
+        reject (err);
+      });
+    });
   }
 }

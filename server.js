@@ -25,5 +25,5 @@ app.get('*',(req,res)=>{
   res.sendFile(path.resolve('dist/index.html'));
 })
 
-http.createServer(app).listen(8080)//recommended 80
+http.createServer(app).listen(8080); //  recommended 80
 //https.createServer(options,app).listen(443);

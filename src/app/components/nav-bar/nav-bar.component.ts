@@ -11,11 +11,11 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class NavBarComponent implements OnInit {
 
-  public navBar: Boolean;
-  public isAdmin: Boolean;
-  public input: String;
+  private navBar: Boolean;
+  private isAdmin: Boolean;
+  private input: String;
 
-  constructor(public users: UsersService, private route: Router, private notify: ToastrService) {}
+  constructor(private users: UsersService, private route: Router, private notify: ToastrService) {}
 
   ngOnInit() {
     this.switchNavBar();
