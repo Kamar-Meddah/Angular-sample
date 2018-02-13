@@ -7,7 +7,7 @@ Run `npm install` to install all the dependencies
 
 # Note
 that is the client side for blog web application
-if you're looking for the server side part here it is https://github.com/Kamar-Meddah/blog-backend
+if you're looking for the server side part here it is https://github.com/Kamar-Meddah/Nodejs-typescript-sample
 
 ## Development server
 
